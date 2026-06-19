@@ -1,19 +1,19 @@
-/* ===== CONFIGURAÇÕES GERAIS ===== */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#101010,#1e1e1e);
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#101010,#1f1f1f);
     color:white;
     line-height:1.6;
 }
-
-/* ===== CABEÇALHO ===== */
 
 header{
     background:#111;
@@ -26,10 +26,11 @@ header{
 
 header h1{
     text-align:center;
-    font-size:2.5rem;
+    font-family:'Permanent Marker', cursive;
     color:#39ff14;
-    text-shadow:3px 3px 0 #000;
+    font-size:2.3rem;
     margin-bottom:15px;
+    text-shadow:3px 3px 0 #000;
 }
 
 nav{
@@ -37,19 +38,16 @@ nav{
 }
 
 nav a{
-    text-decoration:none;
     color:white;
+    text-decoration:none;
     margin:0 15px;
     font-weight:bold;
-    transition:0.3s;
+    transition:.3s;
 }
 
 nav a:hover{
     color:#39ff14;
-    text-shadow:0 0 10px #39ff14;
 }
-
-/* ===== BANNER ===== */
 
 .banner{
     min-height:90vh;
@@ -57,16 +55,16 @@ nav a:hover{
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:40px;
+    padding:30px;
     background:
-    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
     url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854");
     background-size:cover;
     background-position:center;
 }
 
 .banner-content{
-    background:rgba(0,0,0,.7);
+    background:rgba(0,0,0,.75);
     padding:40px;
     border:3px solid #39ff14;
     border-radius:20px;
@@ -74,8 +72,8 @@ nav a:hover{
 }
 
 .banner h2{
-    font-size:3rem;
     color:#39ff14;
+    font-size:3rem;
     margin-bottom:20px;
 }
 
@@ -83,40 +81,54 @@ nav a:hover{
     font-size:1.2rem;
 }
 
-/* ===== SEÇÕES ===== */
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#39ff14;
+    color:black;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    background:white;
+}
 
 section{
     padding:70px 10%;
+    scroll-margin-top:120px;
 }
 
 section h2{
     text-align:center;
-    font-size:2.5rem;
-    margin-bottom:30px;
     color:#39ff14;
-    text-shadow:2px 2px 0 #000;
+    margin-bottom:25px;
+    font-size:2.2rem;
 }
 
-/* ===== CARDS ===== */
-
 .cards{
+    margin-top:30px;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
 }
 
 .card{
-    background:#1c1c1c;
-    border-left:6px solid #39ff14;
+    background:#1b1b1b;
     padding:25px;
     border-radius:15px;
-    box-shadow:0 0 15px rgba(57,255,20,.3);
+    border-left:6px solid #39ff14;
+    box-shadow:0 0 15px rgba(57,255,20,.25);
     transition:.3s;
 }
 
 .card:hover{
-    transform:translateY(-8px) scale(1.03);
-    box-shadow:0 0 25px rgba(57,255,20,.8);
+    transform:translateY(-8px);
+    box-shadow:0 0 20px rgba(57,255,20,.7);
 }
 
 .card h3{
@@ -124,31 +136,8 @@ section h2{
     margin-bottom:10px;
 }
 
-/* ===== BOTÕES ===== */
-
-.btn,
-button{
-    background:#39ff14;
-    color:black;
-    border:none;
-    padding:12px 25px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.btn:hover,
-button:hover{
-    background:white;
-    transform:scale(1.05);
-}
-
-/* ===== FORMULÁRIO ===== */
-
 form{
-    background:#1c1c1c;
+    background:#1b1b1b;
     padding:30px;
     border-radius:15px;
     border:2px solid #39ff14;
@@ -165,7 +154,20 @@ textarea{
     color:white;
 }
 
-/* ===== RODAPÉ ===== */
+button{
+    background:#39ff14;
+    color:black;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:white;
+}
 
 footer{
     background:black;
@@ -174,12 +176,15 @@ footer{
     border-top:4px solid #39ff14;
 }
 
-/* ===== RESPONSIVIDADE ===== */
+footer h3{
+    color:#39ff14;
+    margin-bottom:10px;
+}
 
 @media(max-width:768px){
 
     header h1{
-        font-size:1.8rem;
+        font-size:1.6rem;
     }
 
     .banner h2{
