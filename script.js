@@ -5,18 +5,7 @@
 // Mensagem inicial
 console.log("Site Agro Forte carregado com sucesso!");
 
-// Rolagem suave do menu
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
 
-        const destino = document.querySelector(this.getAttribute('href'));
-
-        destino.scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
 
 // Animação dos cards ao passar o mouse
 const cards = document.querySelectorAll('.card');
