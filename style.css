@@ -89,6 +89,15 @@ padding:120px 20px;
 
     animation:subir 1.5s ease;
 }
+@media(max-width:768px){
+
+.banner h2{
+
+font-size:2.2rem;
+
+}
+
+}
 
 ..banner h2{
 
