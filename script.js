@@ -63,3 +63,34 @@ window.addEventListener('load', () => {
     }, 2500);
 
 });
+// ===============================
+// BOTÃO VOLTAR AO TOPO
+// ===============================
+
+const btnTopo = document.getElementById("btnTopo");
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 400){
+
+        btnTopo.style.display = "block";
+
+    }else{
+
+        btnTopo.style.display = "none";
+
+    }
+
+});
+
+btnTopo.addEventListener("click", () => {
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+});
