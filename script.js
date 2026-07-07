@@ -179,7 +179,7 @@ correta:2
 },
 
 {
-pergunta:"5. O principal objetivo da sustentabilidade é:",
+pergunta:"5. O Principal objetivo da sustentabilidade é:",
 opcoes:[
 "Cortar todas as árvores",
 "Produzir preservando o meio ambiente",
