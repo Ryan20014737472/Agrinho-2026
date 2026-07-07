@@ -395,3 +395,36 @@ footer h3{
     0 0 45px #39ff14;
 
 }
+.estatisticas{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+    padding:60px 20px;
+    background:#111;
+}
+
+.numero{
+    width:250px;
+    text-align:center;
+    padding:25px;
+    border:2px solid #39ff14;
+    border-radius:18px;
+    background:#1b1b1b;
+    box-shadow:0 0 20px rgba(57,255,20,.35);
+    transition:.3s;
+}
+
+.numero:hover{
+    transform:translateY(-8px);
+}
+
+.numero h2{
+    color:#39ff14;
+    font-size:2.6rem;
+    margin-bottom:10px;
+}
+
+.numero p{
+    color:#ddd;
+}
