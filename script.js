@@ -132,31 +132,127 @@ const observador = new IntersectionObserver((entries)=>{
 
 observador.observe(document.querySelector(".estatisticas"));
 
-let quizRespondido = false;
+// =======================
+// QUIZ
+// =======================
 
-function responder(correta) {
+const perguntas = [
 
-    // Se já respondeu, não faz nada
-    if (quizRespondido) {
-        return;
-    }
+{
+pergunta:"1. Qual tecnologia ajuda a economizar água na agricultura?",
+opcoes:[
+"Irrigação Inteligente",
+"Queimada Controlada",
+"Desmatamento"
+],
+correta:0
+},
 
-    quizRespondido = true;
+{
+pergunta:"2. Qual prática ajuda a preservar o solo?",
+opcoes:[
+"Rotação de culturas",
+"Desmatamento",
+"Queimadas"
+],
+correta:0
+},
 
-    const resultado = document.getElementById("resultadoQuiz");
-    const botoes = document.querySelectorAll(".quiz-btn");
+{
+pergunta:"3. Qual fonte é considerada energia renovável?",
+opcoes:[
+"Energia Solar",
+"Carvão Mineral",
+"Diesel"
+],
+correta:0
+},
 
-    botoes.forEach(botao => {
-        botao.disabled = true;
-        botao.style.opacity = "0.6";
-        botao.style.cursor = "not-allowed";
-    });
+{
+pergunta:"4. O uso de drones agrícolas serve para:",
+opcoes:[
+"Monitorar plantações",
+"Aumentar queimadas",
+"Derrubar árvores"
+],
+correta:0
+},
 
-    if (correta) {
-        resultado.innerHTML = "✅ Parabéns! Você acertou!";
-        resultado.style.color = "#39ff14";
-    } else {
-        resultado.innerHTML = "❌ Resposta incorreta!";
-        resultado.style.color = "#ff4444";
-    }
+{
+pergunta:"5. O principal objetivo da sustentabilidade é:",
+opcoes:[
+"Produzir preservando o meio ambiente",
+"Cortar todas as árvores",
+"Usar mais recursos naturais"
+],
+correta:0
 }
+
+];
+
+let perguntaAtual = 0;
+let pontos = 0;
+
+const tituloPergunta = document.getElementById("pergunta");
+const botoesQuiz = document.querySelectorAll(".quiz-btn");
+const resultadoQuiz = document.getElementById("resultadoQuiz");
+
+function carregarPergunta(){
+
+tituloPergunta.textContent = perguntas[perguntaAtual].pergunta;
+
+botoesQuiz.forEach((botao,index)=>{
+
+botao.textContent = perguntas[perguntaAtual].opcoes[index];
+
+});
+
+resultadoQuiz.textContent="";
+
+}
+
+function responder(opcao){
+
+if(opcao===perguntas[perguntaAtual].correta){
+
+pontos++;
+
+resultadoQuiz.innerHTML="✅ Correto!";
+
+resultadoQuiz.style.color="#39ff14";
+
+}else{
+
+resultadoQuiz.innerHTML="❌ Incorreto!";
+
+resultadoQuiz.style.color="#ff4444";
+
+}
+
+botoesQuiz.forEach(botao=>botao.disabled=true);
+
+setTimeout(()=>{
+
+perguntaAtual++;
+
+if(perguntaAtual<perguntas.length){
+
+carregarPergunta();
+
+botoesQuiz.forEach(botao=>botao.disabled=false);
+
+}else{
+
+tituloPergunta.innerHTML="🎉 Quiz Finalizado!";
+
+resultadoQuiz.innerHTML=`Você acertou <strong>${pontos}</strong> de <strong>${perguntas.length}</strong> perguntas.`;
+
+botoesQuiz.forEach(botao=>botao.style.display="none");
+
+}
+
+},1500);
+
+}
+
+carregarPergunta();
