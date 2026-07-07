@@ -131,3 +131,15 @@ const observador = new IntersectionObserver((entries)=>{
 });
 
 observador.observe(document.querySelector(".estatisticas"));
+
+function responder(correta){
+
+    const resultado = document.getElementById("resultadoQuiz");
+
+    if(correta){
+        resultado.innerHTML = "✅ Parabéns! Resposta correta!";
+    }else{
+        resultado.innerHTML = "❌ Resposta incorreta. Tente novamente!";
+    }
+
+}
