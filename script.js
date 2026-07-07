@@ -136,12 +136,22 @@ function responder(correta) {
 
     const resultado = document.getElementById("resultadoQuiz");
 
+    // Seleciona todos os botões do quiz
+    const botoes = document.querySelectorAll(".quiz-btn");
+
+    // Desabilita todos os botões
+    botoes.forEach(botao => {
+        botao.disabled = true;
+        botao.style.opacity = "0.6";
+        botao.style.cursor = "not-allowed";
+    });
+
+    // Mostra o resultado
     if (correta) {
         resultado.textContent = "✅ Parabéns! Você acertou!";
         resultado.style.color = "#39ff14";
     } else {
-        resultado.textContent = "❌ Resposta incorreta. Tente novamente!";
+        resultado.textContent = "❌ Resposta incorreta!";
         resultado.style.color = "#ff4444";
     }
-
 }
