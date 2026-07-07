@@ -34,19 +34,24 @@ header h1{
 }
 
 nav{
-    text-align:center;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
 }
 
 nav a{
     color:white;
     text-decoration:none;
-    margin:0 15px;
-    font-weight:bold;
+    padding:10px 18px;
+    border-radius:10px;
     transition:.3s;
+    font-weight:bold;
 }
 
 nav a:hover{
-    color:#39ff14;
+    background:#39ff14;
+    color:black;
 }
 
 .banner{
@@ -146,17 +151,13 @@ font-size:2.2rem;
 }
 
 .btn:hover{
-
     transform:scale(1.08);
+    background:white;
+    color:black;
 
     box-shadow:
     0 0 35px #39ff14,
     0 0 60px #39ff14;
-
-}
-.btn:hover{
-    transform:scale(1.05);
-    background:white;
 }
 
 section{
@@ -185,6 +186,9 @@ section h2{
     border-left:6px solid #39ff14;
     box-shadow:0 0 15px rgba(57,255,20,.25);
     transition:.3s;
+    display:flex;
+flex-direction:column;
+justify-content:flex-start;
 }
 
 .card:hover{
@@ -330,4 +334,25 @@ footer h3{
 
     }
 
+}
+.numero{
+    background:#1b1b1b;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    border:3px solid #39ff14;
+    box-shadow:0 0 20px rgba(57,255,20,.3);
+}
+
+.numero h3{
+    color:#39ff14;
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.estatisticas{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    padding:60px 10%;
 }
