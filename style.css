@@ -476,3 +476,45 @@ footer h3{
     background:#555;
     color:#ccc;
 }
+/* Botão de tema */
+.theme-btn {
+    background: #1f1f1f;
+    color: #00e5ff;
+    border: 2px solid #00e5ff;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+}
+
+
+/* Tema claro mantendo estilo grafite */
+.light-theme {
+    background: #d8d8d8;
+    color: #111;
+}
+
+.light-theme header,
+.light-theme section,
+.light-theme .quiz-box {
+    background: #eeeeee;
+    color: #111;
+}
+
+.light-theme .card {
+    background: #cccccc;
+}
+
+
+/* Mantém os destaques tecnológicos */
+.light-theme h1,
+.light-theme h2,
+.light-theme h3 {
+    color: #008fa3;
+}
