@@ -23,25 +23,44 @@ cards.forEach(card => {
 });
 
 // Validação do formulário
-const formulario = document.querySelector('form');
+emailjs.init({
+    publicKey: "DjMLX_8zB2QHBCfID",
+});
 
-formulario.addEventListener('submit', function (e) {
+const form = document.getElementById("contact-form");
+const successMessage = document.getElementById("success-message");
+
+form.addEventListener("submit", function(e){
 
     e.preventDefault();
 
-    const nome = document.querySelector('input[type="text"]').value;
-    const email = document.querySelector('input[type="email"]').value;
+    emailjs.sendForm(
+        "service_rkze1ah",
+        "template_068bmyt",
+        this
+    )
+    .then(() => {
 
-    if (nome.trim() === '' || email.trim() === '') {
+        successMessage.style.display = "block";
+        successMessage.innerHTML =
+            "✅ Obrigado pelo contato! Sua mensagem foi enviada com sucesso.";
 
-        alert('Preencha todos os campos obrigatórios.');
+        form.reset();
 
-        return;
-    }
+        setTimeout(() => {
+            successMessage.style.display = "none";
+        }, 5000);
 
-    alert('Mensagem enviada com sucesso! Obrigado por contribuir com a sustentabilidade.');
+    })
+    .catch((error) => {
 
-    formulario.reset();
+        successMessage.style.display = "block";
+        successMessage.style.background = "#c62828";
+        successMessage.innerHTML =
+            "❌ Não foi possível enviar a mensagem. Tente novamente.";
+
+        console.error(error);
+    });
 
 });
 
