@@ -256,3 +256,17 @@ botoesQuiz.forEach(botao=>botao.style.display="none");
 }
 
 carregarPergunta();
+
+const themeButton = document.getElementById("theme-toggle");
+
+themeButton.addEventListener("click", () => {
+
+    document.body.classList.toggle("light-theme");
+
+    if(document.body.classList.contains("light-theme")){
+        themeButton.textContent = "☀️";
+    } else {
+        themeButton.textContent = "🌙";
+    }
+
+});
