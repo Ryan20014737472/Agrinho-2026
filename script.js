@@ -94,3 +94,40 @@ btnTopo.addEventListener("click", () => {
     });
 
 });
+
+const contadores = document.querySelectorAll(".contador");
+
+const iniciarContadores = () => {
+    contadores.forEach(contador => {
+
+        const alvo = +contador.dataset.target;
+        let valor = 0;
+
+        const incremento = alvo / 100;
+
+        const atualizar = () => {
+
+            valor += incremento;
+
+            if(valor < alvo){
+                contador.innerText = Math.floor(valor).toLocaleString("pt-BR");
+                requestAnimationFrame(atualizar);
+            }else{
+                contador.innerText = alvo.toLocaleString("pt-BR");
+            }
+
+        };
+
+        atualizar();
+
+    });
+};
+
+const observador = new IntersectionObserver((entries)=>{
+    if(entries[0].isIntersecting){
+        iniciarContadores();
+        observador.disconnect();
+    }
+});
+
+observador.observe(document.querySelector(".estatisticas"));
