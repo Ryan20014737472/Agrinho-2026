@@ -132,14 +132,16 @@ const observador = new IntersectionObserver((entries)=>{
 
 observador.observe(document.querySelector(".estatisticas"));
 
-function responder(correta){
+function responder(correta) {
 
     const resultado = document.getElementById("resultadoQuiz");
 
-    if(correta){
-        resultado.innerHTML = "✅ Parabéns! Resposta correta!";
-    }else{
-        resultado.innerHTML = "❌ Resposta incorreta. Tente novamente!";
+    if (correta) {
+        resultado.textContent = "✅ Parabéns! Você acertou!";
+        resultado.style.color = "#39ff14";
+    } else {
+        resultado.textContent = "❌ Resposta incorreta. Tente novamente!";
+        resultado.style.color = "#ff4444";
     }
 
 }
