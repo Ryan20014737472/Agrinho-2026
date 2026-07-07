@@ -159,7 +159,7 @@ correta:0
 },
 
 {
-pergunta:"3. Qual fonte é considerada energia renovável?",
+pergunta:"3. Qual Fonte é considerada energia renovável?",
 opcoes:[
 "energia elétrica",
 "energia eólica",
