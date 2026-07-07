@@ -464,3 +464,15 @@ footer h3{
     font-weight:bold;
     color:#39ff14;
 }
+.quiz-btn:disabled{
+    background:#555;
+    color:#ccc;
+    border:2px solid #777;
+    cursor:not-allowed;
+    opacity:0.7;
+}
+
+.quiz-btn:disabled:hover{
+    background:#555;
+    color:#ccc;
+}
