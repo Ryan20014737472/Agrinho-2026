@@ -141,31 +141,31 @@ const perguntas = [
 {
 pergunta:"1. Qual tecnologia ajuda a economizar água na agricultura?",
 opcoes:[
-"Irrigação Inteligente",
 "chuva",
+"Irrigação Inteligente",
 "regadores manuais"
 ],
-correta:0
+correta:1
 },
 
 {
 pergunta:"2. Qual prática ajuda a preservar o solo?",
 opcoes:[
-"Rotação de culturas",
+"usar maquinas agrícolas",
 "regar constantemente",
-"usar maquinas agrícolas"
+"Rotação de culturas"
 ],
-correta:0
+correta:2
 },
 
 {
 pergunta:"3. Qual Fonte é considerada energia renovável?",
 opcoes:[
-"energia elétrica",
 "energia eólica",
+"energia elétrica",
 "Energia Solar"
 ],
-correta:0
+correta:2
 },
 
 {
@@ -175,7 +175,7 @@ opcoes:[
 "Aumentar queimadas",
 "Monitorar plantações"
 ],
-correta:0
+correta:2
 },
 
 {
@@ -185,7 +185,7 @@ opcoes:[
 "Produzir preservando o meio ambiente",
 "Usar mais recursos naturais"
 ],
-correta:0
+correta:1
 }
 
 ];
