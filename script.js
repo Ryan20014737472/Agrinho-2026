@@ -132,26 +132,31 @@ const observador = new IntersectionObserver((entries)=>{
 
 observador.observe(document.querySelector(".estatisticas"));
 
+let quizRespondido = false;
+
 function responder(correta) {
 
-    const resultado = document.getElementById("resultadoQuiz");
+    // Se já respondeu, não faz nada
+    if (quizRespondido) {
+        return;
+    }
 
-    // Seleciona todos os botões do quiz
+    quizRespondido = true;
+
+    const resultado = document.getElementById("resultadoQuiz");
     const botoes = document.querySelectorAll(".quiz-btn");
 
-    // Desabilita todos os botões
     botoes.forEach(botao => {
         botao.disabled = true;
         botao.style.opacity = "0.6";
         botao.style.cursor = "not-allowed";
     });
 
-    // Mostra o resultado
     if (correta) {
-        resultado.textContent = "✅ Parabéns! Você acertou!";
+        resultado.innerHTML = "✅ Parabéns! Você acertou!";
         resultado.style.color = "#39ff14";
     } else {
-        resultado.textContent = "❌ Resposta incorreta!";
+        resultado.innerHTML = "❌ Resposta incorreta!";
         resultado.style.color = "#ff4444";
     }
 }
