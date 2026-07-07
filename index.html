@@ -286,17 +286,34 @@ Ao promover conhecimento e responsabilidade, a educação ambiental fortalece a 
 
         <h2>Contato e Conscientização</h2>
 
-        <form>
+        <form id="contact-form">
 
-            <input type="text" placeholder="Seu nome" required>
+    <input
+        type="text"
+        name="from_name"
+        placeholder="Seu nome"
+        required>
 
-            <input type="email" placeholder="Seu e-mail" required>
+    <input
+        type="email"
+        name="reply_to"
+        placeholder="Seu e-mail"
+        required>
 
-            <textarea rows="5" placeholder="Digite sua mensagem"></textarea>
+    <textarea
+        name="message"
+        placeholder="Digite sua mensagem"
+        required></textarea>
 
-            <button type="submit">Enviar</button>
+    <button type="submit">
+        Enviar
+    </button>
 
-        </form>
+</form>
+
+<div id="success-message" class="success-message">
+    ✅ Obrigado pelo contato! Sua mensagem foi enviada com sucesso.
+</div>
 
     </section>
 
