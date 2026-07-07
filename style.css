@@ -518,3 +518,25 @@ footer h3{
 .light-theme h3 {
     color: #008fa3;
 }
+.success-message{
+    display:none;
+    margin-top:20px;
+    padding:15px;
+    border-radius:12px;
+    background:#2e7d32;
+    color:#fff;
+    text-align:center;
+    font-weight:bold;
+    animation:fadeIn .5s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
