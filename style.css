@@ -356,3 +356,42 @@ footer h3{
     gap:20px;
     padding:60px 10%;
 }
+/* BOTÃO VOLTAR AO TOPO */
+
+#btnTopo{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+
+    width:55px;
+    height:55px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#39ff14;
+    color:black;
+
+    font-size:28px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    display:none;
+
+    z-index:9999;
+
+    box-shadow:0 0 20px rgba(57,255,20,.7);
+
+    transition:.3s;
+}
+
+#btnTopo:hover{
+
+    transform:scale(1.15);
+
+    box-shadow:
+    0 0 25px #39ff14,
+    0 0 45px #39ff14;
+
+}
