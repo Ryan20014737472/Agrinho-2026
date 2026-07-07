@@ -142,8 +142,8 @@ const perguntas = [
 pergunta:"1. Qual tecnologia ajuda a economizar água na agricultura?",
 opcoes:[
 "Irrigação Inteligente",
-"Queimada Controlada",
-"Desmatamento"
+"chuva",
+"regadores manuais"
 ],
 correta:0
 },
@@ -152,8 +152,8 @@ correta:0
 pergunta:"2. Qual prática ajuda a preservar o solo?",
 opcoes:[
 "Rotação de culturas",
-"Desmatamento",
-"Queimadas"
+"regar constantemente",
+"usar maquinas agrícolas"
 ],
 correta:0
 },
@@ -161,9 +161,9 @@ correta:0
 {
 pergunta:"3. Qual fonte é considerada energia renovável?",
 opcoes:[
-"Energia Solar",
-"Carvão Mineral",
-"Diesel"
+"energia elétrica",
+"energia eólica",
+"Energia Solar"
 ],
 correta:0
 },
@@ -171,9 +171,9 @@ correta:0
 {
 pergunta:"4. O uso de drones agrícolas serve para:",
 opcoes:[
-"Monitorar plantações",
+"Derrubar árvores",
 "Aumentar queimadas",
-"Derrubar árvores"
+"Monitorar plantações"
 ],
 correta:0
 },
@@ -181,8 +181,8 @@ correta:0
 {
 pergunta:"5. O principal objetivo da sustentabilidade é:",
 opcoes:[
-"Produzir preservando o meio ambiente",
 "Cortar todas as árvores",
+"Produzir preservando o meio ambiente",
 "Usar mais recursos naturais"
 ],
 correta:0
