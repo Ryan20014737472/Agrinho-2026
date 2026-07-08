@@ -23,75 +23,80 @@ cards.forEach(card => {
 });
 
 // Validação do formulário
-emailjs.init({
-    publicKey: "DjMLX_8zB2QHBCfID",
-});
 
 const form = document.getElementById("contact-form");
 const successMessage = document.getElementById("success-message");
 
-form.addEventListener("submit", function(e){
+if (form && successMessage) {
 
-    e.preventDefault();
-
-    emailjs.sendForm(
-        "service_rkze1ah",
-        "template_068bmyt",
-        this
-    )
-    .then(() => {
-
-        successMessage.style.display = "block";
-        successMessage.innerHTML =
-            "✅ Obrigado pelo contato! Sua mensagem foi enviada com sucesso.";
-
-        form.reset();
-
-        setTimeout(() => {
-            successMessage.style.display = "none";
-        }, 5000);
-
-    })
-    .catch((error) => {
-
-        successMessage.style.display = "block";
-        successMessage.style.background = "#c62828";
-        successMessage.innerHTML =
-            "❌ Não foi possível enviar a mensagem. Tente novamente.";
-
-        console.error(error);
+    emailjs.init({
+        publicKey: "DjMLX_8zB2QHBCfID",
     });
 
-});
+    form.addEventListener("submit", function(e){
 
+        e.preventDefault();
+
+        emailjs.sendForm(
+            "service_rkze1ah",
+            "template_068bmyt",
+            this
+        ).then(() => {
+
+            successMessage.style.display = "block";
+            successMessage.style.background = "#2e7d32";
+            successMessage.innerHTML = "✅ Obrigado pelo contato! Sua mensagem foi enviada com sucesso.";
+
+            form.reset();
+
+        }).catch((error) => {
+
+            successMessage.style.display = "block";
+            successMessage.style.background = "#c62828";
+            successMessage.innerHTML = "❌ Erro ao enviar a mensagem.";
+
+            console.error(error);
+
+        });
+
+    });
+
+}
 // Botão de destaque ao carregar a página
 window.addEventListener('load', () => {
 
     const botao = document.querySelector('.btn');
 
-    botao.style.transition = '0.5s';
+if (botao) {
+
+    botao.style.transition = "0.5s";
 
     setInterval(() => {
 
-        botao.style.transform = 'scale(1.08)';
+        botao.style.transform = "scale(1.08)";
 
         setTimeout(() => {
-            botao.style.transform = 'scale(1)';
+            botao.style.transform = "scale(1)";
         }, 500);
 
     }, 2500);
 
-});
+}
 // ===============================
 // BOTÃO VOLTAR AO TOPO
 // ===============================
-
 const btnTopo = document.getElementById("btnTopo");
+if(btnTopo){
 
 window.addEventListener("scroll", () => {
 
     if(window.scrollY > 400){
+        btnTopo.style.display = "block";
+    }else{
+        btnTopo.style.display = "none";
+    }
 
+});
         btnTopo.style.display = "block";
 
     }else{
