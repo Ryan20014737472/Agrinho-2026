@@ -1,0 +1,542 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#101010,#1f1f1f);
+    color:white;
+    line-height:1.6;
+}
+
+header{
+    background:#111;
+    padding:20px;
+    border-bottom:4px solid #39ff14;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+header h1{
+    text-align:center;
+    font-family:'Permanent Marker', cursive;
+    color:#39ff14;
+    font-size:2.3rem;
+    margin-bottom:15px;
+    text-shadow:3px 3px 0 #000;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:10px;
+    transition:.3s;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#39ff14;
+    color:black;
+}
+
+.banner{
+    position:relative;
+    width:100%;
+    min-height:65vh;
+padding:120px 20px;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),
+    url("assent/agricultura-ia.png");
+
+    background-size:cover;
+    background-position:center;
+
+    animation:moverBanner 18s infinite alternate;
+}
+
+.banner-content{
+
+    position:relative;
+    z-index:2;
+
+    max-width:850px;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(8px);
+
+    padding:45px;
+
+    border-radius:25px;
+
+    border:3px solid #39ff14;
+
+    animation:subir 1.5s ease;
+}
+@media(max-width:768px){
+
+.banner h2{
+
+font-size:2.2rem;
+
+}
+
+}
+
+..banner h2{
+
+    font-family:'Permanent Marker', cursive;
+
+    font-size:3rem;
+
+    color:#39ff14;
+
+    text-shadow:
+    4px 4px black,
+    0 0 25px #39ff14;
+
+    animation:piscar 2.5s infinite;
+}
+.banner p{
+
+    margin:30px 0;
+
+    font-size:1.35rem;
+
+    color:white;
+
+    line-height:1.8;
+}
+
+.btn{
+
+    display:inline-block;
+
+    padding:16px 35px;
+
+    background:#39ff14;
+
+    color:black;
+
+    font-weight:bold;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    transition:.4s;
+
+    box-shadow:0 0 20px #39ff14;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+    background:white;
+    color:black;
+
+    box-shadow:
+    0 0 35px #39ff14,
+    0 0 60px #39ff14;
+}
+
+section{
+    padding:70px 10%;
+    scroll-margin-top:120px;
+}
+
+section h2{
+    text-align:center;
+    color:#39ff14;
+    margin-bottom:25px;
+    font-size:2.2rem;
+}
+
+.cards{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#1b1b1b;
+    padding:25px;
+    border-radius:15px;
+    border-left:6px solid #39ff14;
+    box-shadow:0 0 15px rgba(57,255,20,.25);
+    transition:.3s;
+    display:flex;
+flex-direction:column;
+justify-content:flex-start;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 20px rgba(57,255,20,.7);
+}
+
+.card h3{
+    color:#39ff14;
+    margin-bottom:10px;
+}
+
+form{
+    background:#1b1b1b;
+    padding:30px;
+    border-radius:15px;
+    border:2px solid #39ff14;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+    background:#2a2a2a;
+    color:white;
+}
+
+button{
+    background:#39ff14;
+    color:black;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:white;
+}
+
+footer{
+    background:black;
+    text-align:center;
+    padding:25px;
+    border-top:4px solid #39ff14;
+}
+
+footer h3{
+    color:#39ff14;
+    margin-bottom:10px;
+}
+
+@media(max-width:768px){
+
+    header h1{
+        font-size:1.6rem;
+    }
+
+    .banner h2{
+        font-size:2rem;
+    }
+
+    nav a{
+        display:block;
+        margin:10px 0;
+    }
+}
+.imagem-site{
+    width:100%;
+    max-width:700px;
+    display:block;
+    margin:30px auto;
+    border-radius:20px;
+    border:4px solid #39ff14;
+    box-shadow:0 0 25px rgba(57,255,20,.6);
+    transition:0.4s;
+}
+
+.imagem-site:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 35px rgba(57,255,20,.9);
+}
+@keyframes subir{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(60px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes moverBanner{
+
+    0%{
+
+        background-position:center center;
+
+    }
+
+    100%{
+
+        background-position:center top;
+
+    }
+
+}
+
+@keyframes piscar{
+
+    0%{
+
+        text-shadow:0 0 10px #39ff14;
+
+    }
+
+    50%{
+
+        text-shadow:
+        0 0 35px #39ff14,
+        0 0 60px #39ff14;
+
+    }
+
+    100%{
+
+        text-shadow:0 0 10px #39ff14;
+
+    }
+
+}
+.numero{
+    background:#1b1b1b;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    border:3px solid #39ff14;
+    box-shadow:0 0 20px rgba(57,255,20,.3);
+}
+
+.numero h3{
+    color:#39ff14;
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.estatisticas{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    padding:60px 10%;
+}
+/* BOTÃO VOLTAR AO TOPO */
+
+#btnTopo{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+
+    width:55px;
+    height:55px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#39ff14;
+    color:black;
+
+    font-size:28px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    display:none;
+
+    z-index:9999;
+
+    box-shadow:0 0 20px rgba(57,255,20,.7);
+
+    transition:.3s;
+}
+
+#btnTopo:hover{
+
+    transform:scale(1.15);
+
+    box-shadow:
+    0 0 25px #39ff14,
+    0 0 45px #39ff14;
+
+}
+.estatisticas{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+    padding:60px 20px;
+    background:#111;
+}
+
+.numero{
+    width:250px;
+    text-align:center;
+    padding:25px;
+    border:2px solid #39ff14;
+    border-radius:18px;
+    background:#1b1b1b;
+    box-shadow:0 0 20px rgba(57,255,20,.35);
+    transition:.3s;
+}
+
+.numero:hover{
+    transform:translateY(-8px);
+}
+
+.numero h2{
+    color:#39ff14;
+    font-size:2.6rem;
+    margin-bottom:10px;
+}
+
+.numero p{
+    color:#ddd;
+}
+.quiz-box{
+    max-width:700px;
+    margin:40px auto;
+    background:#1b1b1b;
+    padding:30px;
+    border-radius:20px;
+    border:2px solid #39ff14;
+    text-align:center;
+    box-shadow:0 0 20px rgba(57,255,20,.4);
+}
+
+.quiz-btn{
+    display:block;
+    width:100%;
+    margin:15px 0;
+    padding:15px;
+    background:#111;
+    color:white;
+    border:2px solid #39ff14;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+    font-size:1rem;
+}
+
+.quiz-btn:hover{
+    background:#39ff14;
+    color:black;
+}
+
+#resultadoQuiz{
+    margin-top:20px;
+    font-size:1.2rem;
+    font-weight:bold;
+    color:#39ff14;
+}
+.quiz-btn:disabled{
+    background:#555;
+    color:#ccc;
+    border:2px solid #777;
+    cursor:not-allowed;
+    opacity:0.7;
+}
+
+.quiz-btn:disabled:hover{
+    background:#555;
+    color:#ccc;
+}
+/* Botão de tema */
+.theme-btn {
+    background: #1f1f1f;
+    color: #00e5ff;
+    border: 2px solid #00e5ff;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+}
+
+
+/* Tema claro mantendo estilo grafite */
+.light-theme {
+    background: #d8d8d8;
+    color: #111;
+}
+
+.light-theme header,
+.light-theme section,
+.light-theme .quiz-box {
+    background: #eeeeee;
+    color: #111;
+}
+
+.light-theme .card {
+    background: #cccccc;
+}
+
+
+/* Mantém os destaques tecnológicos */
+.light-theme h1,
+.light-theme h2,
+.light-theme h3 {
+    color: #008fa3;
+}
+.success-message{
+    display:none;
+    margin-top:20px;
+    padding:15px;
+    border-radius:12px;
+    background:#2e7d32;
+    color:#fff;
+    text-align:center;
+    font-weight:bold;
+    animation:fadeIn .5s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
