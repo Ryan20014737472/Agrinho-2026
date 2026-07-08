@@ -137,9 +137,6 @@ const secaoEstatisticas = document.querySelector(".estatisticas");
 if (secaoEstatisticas) {
     observador.observe(secaoEstatisticas);
 }
-});
-
-observador.observe(document.querySelector(".estatisticas"));
 
 // =======================
 // QUIZ
