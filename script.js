@@ -123,10 +123,19 @@ atualizar();
 });
 };
 
-const observador = new IntersectionObserver((entries)=>{
-if(entries[0].isIntersecting){
-iniciarContadores();
-observador.disconnect();
+const observador = new IntersectionObserver((entries) => {
+
+    if (entries[0].isIntersecting) {
+        iniciarContadores();
+        observador.disconnect();
+    }
+
+});
+
+const secaoEstatisticas = document.querySelector(".estatisticas");
+
+if (secaoEstatisticas) {
+    observador.observe(secaoEstatisticas);
 }
 });
 
