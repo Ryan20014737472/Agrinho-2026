@@ -97,9 +97,17 @@ if (formulario) {
 
         }
 
-        alert("Mensagem enviada com sucesso! Obrigado por colaborar com a sustentabilidade.");
+        const mensagem = document.getElementById("mensagemSucesso");
 
-        formulario.reset();
+mensagem.style.display = "block";
+
+formulario.reset();
+
+setTimeout(() => {
+
+    mensagem.style.display = "none";
+
+}, 5000);
 
     });
 
