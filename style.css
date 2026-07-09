@@ -1,133 +1,454 @@
+/* =========================================
+   AGRO FORTE - FUTURO SUSTENTÁVEL
+   STYLE CSS
+========================================= */
+
+
+/* =========================================
+   RESET GERAL
+========================================= */
+
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
+
 }
+
 
 html{
+
     scroll-behavior:smooth;
+
 }
+
 
 body{
-    font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#101010,#1f1f1f);
-    color:white;
+
+    font-family:Arial, Helvetica, sans-serif;
+
     line-height:1.6;
+
+    min-height:100vh;
+
+    background:var(--fundo);
+
+    color:var(--texto);
+
+    transition:.4s;
+
 }
+
+
+/* =========================================
+   VARIÁVEIS DE CORES
+========================================= */
+
+:root{
+
+    --verde:#39ff14;
+
+    --verde-escuro:#008f11;
+
+    --preto:#101010;
+
+    --grafite:#1b1b1b;
+
+    --cinza:#2a2a2a;
+
+    --branco:#ffffff;
+
+    --texto:#ffffff;
+
+    --fundo:
+    linear-gradient(
+        135deg,
+        #101010,
+        #1f1f1f,
+        #252525
+    );
+
+    --sombra:
+    0 0 25px rgba(57,255,20,.35);
+
+}
+
+
+/* =========================================
+   TEMA CLARO
+========================================= */
+
+
+body.light-theme{
+
+    --fundo:
+    linear-gradient(
+        135deg,
+        #eeeeee,
+        #d8d8d8
+    );
+
+    --texto:#111;
+
+    --grafite:#ffffff;
+
+    --cinza:#dddddd;
+
+    --preto:#eeeeee;
+
+    --branco:#111;
+
+}
+
+
+/* Ajustes do tema claro */
+
+
+.light-theme header{
+
+    background:#ffffff;
+
+}
+
+
+.light-theme nav a{
+
+    color:#111;
+
+}
+
+
+.light-theme .card,
+.light-theme .numero,
+.light-theme .quiz-box,
+.light-theme form{
+
+    background:#ffffff;
+
+    color:#111;
+
+}
+
+
+.light-theme p{
+
+    color:#222;
+
+}
+
+
+.light-theme h1,
+.light-theme h2,
+.light-theme h3{
+
+    color:#008f11;
+
+}
+
+
+/* =========================================
+   BARRA DE PROGRESSO
+========================================= */
+
+
+#progress-bar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:0%;
+
+    height:5px;
+
+    background:var(--verde);
+
+    box-shadow:0 0 15px var(--verde);
+
+    z-index:99999;
+
+}
+
+
+
+/* =========================================
+   HEADER
+========================================= */
+
 
 header{
-    background:#111;
-    padding:20px;
-    border-bottom:4px solid #39ff14;
+
     position:sticky;
+
     top:0;
+
     z-index:1000;
+
+    padding:20px;
+
+    background:#111;
+
+    border-bottom:
+    4px solid var(--verde);
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,.5);
+
+    transition:.4s;
+
 }
+
+
 
 header h1{
+
     text-align:center;
-    font-family:'Permanent Marker', cursive;
-    color:#39ff14;
-    font-size:2.3rem;
-    margin-bottom:15px;
-    text-shadow:3px 3px 0 #000;
+
+    font-family:
+    'Permanent Marker',
+    cursive;
+
+    font-size:2.4rem;
+
+    color:var(--verde);
+
+    text-shadow:
+
+    3px 3px 0 black,
+
+    0 0 20px var(--verde);
+
+    margin-bottom:20px;
+
 }
+
+
+
+/* =========================================
+   MENU
+========================================= */
+
 
 nav{
+
     display:flex;
+
     justify-content:center;
+
+    align-items:center;
+
     flex-wrap:wrap;
-    gap:20px;
+
+    gap:15px;
+
 }
+
+
 
 nav a{
-    color:white;
+
     text-decoration:none;
-    padding:10px 18px;
-    border-radius:10px;
-    transition:.3s;
+
+    color:white;
+
     font-weight:bold;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    transition:.3s;
+
 }
+
+
 
 nav a:hover{
-    background:#39ff14;
+
+    background:var(--verde);
+
     color:black;
+
+    transform:
+    translateY(-4px);
+
+    box-shadow:
+    0 0 15px var(--verde);
+
 }
+
+
+
+/* =========================================
+   BOTÃO DE TEMA
+========================================= */
+
+
+.theme-btn{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    background:var(--verde);
+
+    color:black;
+
+    transition:.4s;
+
+}
+
+
+
+.theme-btn:hover{
+
+    transform:
+    rotate(180deg)
+    scale(1.15);
+
+    box-shadow:
+    0 0 20px var(--verde);
+
+}
+/* =========================================
+   BANNER
+========================================= */
 
 .banner{
+
     position:relative;
-    width:100%;
-    min-height:65vh;
-padding:120px 20px;
-    overflow:hidden;
+
+    min-height:75vh;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     text-align:center;
 
+    padding:120px 20px;
+
+    overflow:hidden;
+
     background:
-    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.75)),
-    url("assent/agricultura-ia.png");
+
+    linear-gradient(
+        rgba(0,0,0,.60),
+        rgba(0,0,0,.75)
+    ),
+
+    url("Assente/agricultura-ia.png");
 
     background-size:cover;
+
     background-position:center;
 
-    animation:moverBanner 18s infinite alternate;
+    background-attachment:fixed;
+
 }
+
+
+
+.banner::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+    45deg,
+
+    rgba(57,255,20,.10),
+
+    transparent,
+
+    rgba(57,255,20,.10)
+
+    );
+
+}
+
+
 
 .banner-content{
 
     position:relative;
+
     z-index:2;
 
-    max-width:850px;
+    max-width:900px;
 
-    background:rgba(0,0,0,.45);
-
-    backdrop-filter:blur(8px);
-
-    padding:45px;
+    padding:50px;
 
     border-radius:25px;
 
-    border:3px solid #39ff14;
+    background:
 
-    animation:subir 1.5s ease;
+    rgba(20,20,20,.55);
+
+    backdrop-filter:blur(10px);
+
+    border:2px solid rgba(57,255,20,.4);
+
+    box-shadow:
+
+    0 0 30px rgba(57,255,20,.25);
+
 }
-@media(max-width:768px){
+
+
 
 .banner h2{
 
-font-size:2.2rem;
+    font-family:'Permanent Marker',cursive;
 
-}
+    font-size:3.3rem;
 
-}
+    color:var(--verde);
 
-..banner h2{
-
-    font-family:'Permanent Marker', cursive;
-
-    font-size:3rem;
-
-    color:#39ff14;
+    margin-bottom:25px;
 
     text-shadow:
-    4px 4px black,
-    0 0 25px #39ff14;
 
-    animation:piscar 2.5s infinite;
+    0 0 20px var(--verde);
+
 }
+
+
+
 .banner p{
 
-    margin:30px 0;
+    font-size:1.25rem;
 
-    font-size:1.35rem;
+    margin-bottom:35px;
 
-    color:white;
+    line-height:1.9;
 
-    line-height:1.8;
 }
+
+
+
+/* =========================================
+   BOTÃO PRINCIPAL
+========================================= */
 
 .btn{
 
@@ -135,408 +456,627 @@ font-size:2.2rem;
 
     padding:16px 35px;
 
-    background:#39ff14;
+    background:var(--verde);
 
     color:black;
+
+    text-decoration:none;
 
     font-weight:bold;
 
     border-radius:12px;
 
-    text-decoration:none;
+    transition:.35s;
+
+    box-shadow:
+
+    0 0 20px rgba(57,255,20,.5);
+
+}
+
+
+
+.btn:hover{
+
+    transform:
+
+    translateY(-5px)
+
+    scale(1.05);
+
+    box-shadow:
+
+    0 0 35px var(--verde);
+
+}
+
+
+
+/* =========================================
+   SEÇÕES
+========================================= */
+
+section{
+
+    padding:80px 10%;
+
+}
+
+
+
+section h2{
+
+    text-align:center;
+
+    color:var(--verde);
+
+    font-size:2.5rem;
+
+    margin-bottom:35px;
+
+}
+
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(300px,1fr));
+
+    gap:30px;
+
+}
+
+
+
+.card{
+
+    background:var(--grafite);
+
+    padding:30px;
+
+    border-radius:20px;
+
+    border-left:6px solid var(--verde);
+
+    box-shadow:var(--sombra);
+
+    transition:.35s;
+
+}
+
+
+
+.card:hover{
+
+    transform:
+
+    translateY(-12px)
+
+    scale(1.02);
+
+    box-shadow:
+
+    0 0 35px rgba(57,255,20,.55);
+
+}
+
+
+
+.card h3{
+
+    color:var(--verde);
+
+    margin-bottom:15px;
+
+}
+
+
+
+.card p{
+
+    line-height:1.8;
+
+}
+
+
+
+/* =========================================
+   IMAGENS
+========================================= */
+
+.imagem-site{
+
+    display:block;
+
+    width:100%;
+
+    max-width:850px;
+
+    margin:40px auto;
+
+    border-radius:20px;
+
+    border:4px solid var(--verde);
+
+    box-shadow:
+
+    0 0 30px rgba(57,255,20,.45);
 
     transition:.4s;
 
-    box-shadow:0 0 20px #39ff14;
 }
 
-.btn:hover{
-    transform:scale(1.08);
-    background:white;
-    color:black;
+
+
+.imagem-site:hover{
+
+    transform:scale(1.03);
 
     box-shadow:
-    0 0 35px #39ff14,
-    0 0 60px #39ff14;
-}
 
-section{
-    padding:70px 10%;
-    scroll-margin-top:120px;
-}
+    0 0 45px var(--verde);
 
-section h2{
-    text-align:center;
-    color:#39ff14;
-    margin-bottom:25px;
-    font-size:2.2rem;
 }
+/* =========================================
+   ESTATÍSTICAS
+========================================= */
 
-.cards{
-    margin-top:30px;
+.estatisticas{
+
     display:grid;
+
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
+
+    gap:30px;
+
+    margin:50px 0;
+
 }
 
-.card{
-    background:#1b1b1b;
-    padding:25px;
-    border-radius:15px;
-    border-left:6px solid #39ff14;
-    box-shadow:0 0 15px rgba(57,255,20,.25);
-    transition:.3s;
-    display:flex;
-flex-direction:column;
-justify-content:flex-start;
+.numero{
+
+    background:var(--grafite);
+
+    padding:35px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    border:2px solid var(--verde);
+
+    transition:.4s;
+
+    box-shadow:var(--sombra);
+
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 0 20px rgba(57,255,20,.7);
+.numero:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 0 35px rgba(57,255,20,.55);
+
 }
 
-.card h3{
-    color:#39ff14;
+.numero h2{
+
+    font-size:3rem;
+
+    color:var(--verde);
+
     margin-bottom:10px;
+
 }
+
+.numero p{
+
+    color:var(--texto);
+
+}
+
+
+/* =========================================
+   QUIZ
+========================================= */
+
+.quiz-box{
+
+    max-width:800px;
+
+    margin:auto;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    background:var(--grafite);
+
+    border:2px solid var(--verde);
+
+    box-shadow:var(--sombra);
+
+}
+
+.quiz-box h3{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+.quiz-btn{
+
+    width:100%;
+
+    margin:12px 0;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    background:var(--cinza);
+
+    color:var(--texto);
+
+    font-size:1rem;
+
+    transition:.3s;
+
+}
+
+.quiz-btn:hover{
+
+    background:var(--verde);
+
+    color:black;
+
+    transform:scale(1.02);
+
+}
+
+.quiz-btn:disabled{
+
+    opacity:.85;
+
+    cursor:not-allowed;
+
+}
+
+#resultadoQuiz{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+    font-size:1.2rem;
+
+}
+
+
+/* =========================================
+   FORMULÁRIO
+========================================= */
 
 form{
-    background:#1b1b1b;
-    padding:30px;
-    border-radius:15px;
-    border:2px solid #39ff14;
+
+    max-width:700px;
+
+    margin:auto;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    background:var(--grafite);
+
+    box-shadow:var(--sombra);
+
 }
 
 input,
 textarea{
+
     width:100%;
-    padding:12px;
-    margin:10px 0;
+
+    margin:15px 0;
+
+    padding:15px;
+
     border:none;
-    border-radius:8px;
-    background:#2a2a2a;
-    color:white;
+
+    border-radius:12px;
+
+    background:var(--cinza);
+
+    color:var(--texto);
+
+    font-size:1rem;
+
 }
 
-button{
-    background:#39ff14;
+input:focus,
+textarea:focus{
+
+    outline:2px solid var(--verde);
+
+}
+
+form button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:var(--verde);
+
     color:black;
-    border:none;
-    padding:12px 25px;
-    border-radius:8px;
+
+    font-size:1rem;
+
     font-weight:bold;
+
     cursor:pointer;
+
     transition:.3s;
+
 }
 
-button:hover{
-    background:white;
+form button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 20px var(--verde);
+
 }
+
+
+/* =========================================
+   FOOTER
+========================================= */
 
 footer{
-    background:black;
+
+    margin-top:60px;
+
+    padding:35px;
+
     text-align:center;
-    padding:25px;
-    border-top:4px solid #39ff14;
+
+    background:#111;
+
+    border-top:4px solid var(--verde);
+
 }
 
 footer h3{
-    color:#39ff14;
+
+    color:var(--verde);
+
     margin-bottom:10px;
+
+}
+
+
+/* =========================================
+   BOTÃO TOPO
+========================================= */
+
+#btnTopo{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:55px;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--verde);
+
+    color:black;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:0 0 20px rgba(57,255,20,.5);
+
+    transition:.3s;
+
+}
+
+#btnTopo:hover{
+
+    transform:scale(1.1);
+
+}
+
+
+/* =========================================
+   ANIMAÇÕES
+========================================= */
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.card,
+.numero,
+.quiz-box,
+form{
+
+    animation:aparecer .8s ease;
+
+}
+
+
+/* =========================================
+   SCROLL
+========================================= */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--verde);
+
+    border-radius:20px;
+
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media(max-width:900px){
+
+    .banner h2{
+
+        font-size:2.5rem;
+
+    }
+
+    section{
+
+        padding:60px 8%;
+
+    }
+
 }
 
 @media(max-width:768px){
 
     header h1{
-        font-size:1.6rem;
+
+        font-size:1.8rem;
+
     }
 
-    .banner h2{
-        font-size:2rem;
+    nav{
+
+        gap:10px;
+
     }
 
     nav a{
-        display:block;
-        margin:10px 0;
-    }
-}
-.imagem-site{
-    width:100%;
-    max-width:700px;
-    display:block;
-    margin:30px auto;
-    border-radius:20px;
-    border:4px solid #39ff14;
-    box-shadow:0 0 25px rgba(57,255,20,.6);
-    transition:0.4s;
-}
 
-.imagem-site:hover{
-    transform:scale(1.03);
-    box-shadow:0 0 35px rgba(57,255,20,.9);
-}
-@keyframes subir{
+        width:100%;
 
-    from{
-
-        opacity:0;
-
-        transform:translateY(60px);
+        text-align:center;
 
     }
 
-    to{
+    .banner{
 
-        opacity:1;
+        min-height:60vh;
 
-        transform:translateY(0);
-
-    }
-
-}
-
-@keyframes moverBanner{
-
-    0%{
-
-        background-position:center center;
+        background-attachment:scroll;
 
     }
 
-    100%{
+    .banner-content{
 
-        background-position:center top;
+        padding:30px;
+
+    }
+
+    .banner h2{
+
+        font-size:2rem;
+
+    }
+
+    .banner p{
+
+        font-size:1rem;
+
+    }
+
+    .cards{
+
+        grid-template-columns:1fr;
 
     }
 
 }
 
-@keyframes piscar{
+@media(max-width:500px){
 
-    0%{
+    .banner h2{
 
-        text-shadow:0 0 10px #39ff14;
-
-    }
-
-    50%{
-
-        text-shadow:
-        0 0 35px #39ff14,
-        0 0 60px #39ff14;
+        font-size:1.6rem;
 
     }
 
-    100%{
+    section h2{
 
-        text-shadow:0 0 10px #39ff14;
+        font-size:2rem;
 
     }
 
-}
-.numero{
-    background:#1b1b1b;
-    padding:30px;
-    border-radius:20px;
-    text-align:center;
-    border:3px solid #39ff14;
-    box-shadow:0 0 20px rgba(57,255,20,.3);
-}
+    .numero h2{
 
-.numero h3{
-    color:#39ff14;
-    font-size:2rem;
-    margin-bottom:10px;
-}
+        font-size:2.3rem;
 
-.estatisticas{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    padding:60px 10%;
-}
-/* BOTÃO VOLTAR AO TOPO */
-
-#btnTopo{
-    position:fixed;
-    bottom:25px;
-    right:25px;
-
-    width:55px;
-    height:55px;
-
-    border:none;
-    border-radius:50%;
-
-    background:#39ff14;
-    color:black;
-
-    font-size:28px;
-    font-weight:bold;
-
-    cursor:pointer;
-
-    display:none;
-
-    z-index:9999;
-
-    box-shadow:0 0 20px rgba(57,255,20,.7);
-
-    transition:.3s;
-}
-
-#btnTopo:hover{
-
-    transform:scale(1.15);
-
-    box-shadow:
-    0 0 25px #39ff14,
-    0 0 45px #39ff14;
-
-}
-.estatisticas{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    flex-wrap:wrap;
-    padding:60px 20px;
-    background:#111;
-}
-
-.numero{
-    width:250px;
-    text-align:center;
-    padding:25px;
-    border:2px solid #39ff14;
-    border-radius:18px;
-    background:#1b1b1b;
-    box-shadow:0 0 20px rgba(57,255,20,.35);
-    transition:.3s;
-}
-
-.numero:hover{
-    transform:translateY(-8px);
-}
-
-.numero h2{
-    color:#39ff14;
-    font-size:2.6rem;
-    margin-bottom:10px;
-}
-
-.numero p{
-    color:#ddd;
-}
-.quiz-box{
-    max-width:700px;
-    margin:40px auto;
-    background:#1b1b1b;
-    padding:30px;
-    border-radius:20px;
-    border:2px solid #39ff14;
-    text-align:center;
-    box-shadow:0 0 20px rgba(57,255,20,.4);
-}
-
-.quiz-btn{
-    display:block;
-    width:100%;
-    margin:15px 0;
-    padding:15px;
-    background:#111;
-    color:white;
-    border:2px solid #39ff14;
-    border-radius:12px;
-    cursor:pointer;
-    transition:.3s;
-    font-size:1rem;
-}
-
-.quiz-btn:hover{
-    background:#39ff14;
-    color:black;
-}
-
-#resultadoQuiz{
-    margin-top:20px;
-    font-size:1.2rem;
-    font-weight:bold;
-    color:#39ff14;
-}
-.quiz-btn:disabled{
-    background:#555;
-    color:#ccc;
-    border:2px solid #777;
-    cursor:not-allowed;
-    opacity:0.7;
-}
-
-.quiz-btn:disabled:hover{
-    background:#555;
-    color:#ccc;
-}
-/* Botão de tema */
-.theme-btn {
-    background: #1f1f1f;
-    color: #00e5ff;
-    border: 2px solid #00e5ff;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    cursor: pointer;
-    font-size: 20px;
-    transition: 0.3s;
-}
-
-.theme-btn:hover {
-    transform: scale(1.1);
-}
-
-
-/* Tema claro mantendo estilo grafite */
-.light-theme {
-    background: #d8d8d8;
-    color: #111;
-}
-
-.light-theme header,
-.light-theme section,
-.light-theme .quiz-box {
-    background: #eeeeee;
-    color: #111;
-}
-
-.light-theme .card {
-    background: #cccccc;
-}
-
-
-/* Mantém os destaques tecnológicos */
-.light-theme h1,
-.light-theme h2,
-.light-theme h3 {
-    color: #008fa3;
-}
-.success-message{
-    display:none;
-    margin-top:20px;
-    padding:15px;
-    border-radius:12px;
-    background:#2e7d32;
-    color:#fff;
-    text-align:center;
-    font-weight:bold;
-    animation:fadeIn .5s ease;
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(-10px);
     }
-    to{
-        opacity:1;
-        transform:translateY(0);
+
     }
-}
