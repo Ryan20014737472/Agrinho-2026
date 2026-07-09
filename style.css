@@ -848,6 +848,27 @@ form button:hover{
     box-shadow:0 0 20px var(--verde);
 
 }
+.mensagem-sucesso{
+
+    display:none;
+
+    margin-top:25px;
+
+    padding:20px;
+
+    background:#39ff14;
+
+    color:black;
+
+    text-align:center;
+
+    border-radius:15px;
+
+    font-weight:bold;
+
+    animation:aparecer .5s;
+
+}
 
 
 /* =========================================
