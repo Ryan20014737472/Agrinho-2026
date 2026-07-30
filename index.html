@@ -53,6 +53,8 @@
 
             <a href="#quiz">Quiz</a>
 
+            <a href="#calculadora">Calculadora</a>
+
             <a href="#contato">Contato</a>
 
             <button
@@ -441,6 +443,34 @@
         </div> <div class="card"> <h3>🛰 Monitoramento em Tempo Real</h3> <p> Sensores e satélites acompanham as plantações continuamente, permitindo decisões rápidas e mais eficientes. </p> </div> 
             <div class="card"> <h3>📚 Educação Ambiental</h3> <p> A conscientização da população é fundamental para garantir um futuro sustentável, unindo tecnologia, preservação e produção. </p> </div> </div> </section> 
     <!-- ================================= --> <!-- QUIZ --> <!-- ================================= --> <section id="quiz"> <h2>🌱 Quiz da Sustentabilidade</h2> <div class="quiz-box"> <h3 id="pergunta"></h3> <button class="quiz-btn" onclick="responder(0)"></button> <button class="quiz-btn" onclick="responder(1)"></button> <button class="quiz-btn" onclick="responder(2)"></button> <p id="resultadoQuiz"></p> </div> </section> 
+
+    <!-- ================================= -->
+    <!-- CALCULADORA SUSTENTÁVEL -->
+    <!-- ================================= -->
+    <section id="calculadora">
+        <h2>💧 Calculadora Sustentável</h2>
+        <p class="calculadora-intro">Descubra como pequenas atitudes no campo e na cidade podem gerar grandes impactos.</p>
+        <div class="calculadora-grid">
+            <article class="calculadora-card">
+                <h3>🚰 Torneiras sem vazamento</h3>
+                <p>Quantas torneiras pingando você pretende consertar?</p>
+                <label for="torneiras">Número de torneiras</label>
+                <input id="torneiras" type="number" min="0" value="10" inputmode="numeric">
+                <button class="calculadora-btn" type="button" data-calculo="agua">Calcular economia</button>
+                <p id="resultadoAgua" class="resultado-calculadora" aria-live="polite"></p>
+                <small>Estimativa: até 15 litros desperdiçados por torneira a cada dia.</small>
+            </article>
+            <article class="calculadora-card">
+                <h3>🌾 Plantio de arroz</h3>
+                <p>Quantos pés de arroz você pretende plantar?</p>
+                <label for="pes-arroz">Número de pés de arroz</label>
+                <input id="pes-arroz" type="number" min="0" value="5" inputmode="numeric">
+                <button class="calculadora-btn" type="button" data-calculo="arroz">Calcular produção</button>
+                <p id="resultadoArroz" class="resultado-calculadora" aria-live="polite"></p>
+                <small>Estimativa educativa: cerca de 30 g de arroz beneficiado por pé; a produção real varia.</small>
+            </article>
+        </div>
+    </section>
     <!-- ================================= --> <!-- CONTATO --> <!-- ================================= --> <section id="contato"> <h2>📩 Entre em Contato</h2> <form id="formulario-contato" novalidate>
     <div id="mensagemFormulario" class="mensagem-formulario" role="status" aria-live="polite" hidden></div>
     <input type="text" name="nome" placeholder="Seu nome" aria-label="Seu nome" required>
