@@ -1434,3 +1434,9 @@ form{
     outline:3px solid var(--branco);
     outline-offset:3px;
 }
+
+
+/* Mantém o aviso invisível até o formulário ser enviado */
+.mensagem-formulario[hidden]{
+    display:none;
+}
