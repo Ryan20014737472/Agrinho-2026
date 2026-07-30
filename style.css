@@ -1408,3 +1408,29 @@ form{
         animation:none;
     }
 }
+
+
+/* Botão de reinício do quiz */
+.quiz-restart{
+    display:inline-block;
+    padding:13px 24px;
+    border:2px solid var(--verde);
+    border-radius:12px;
+    background:var(--verde);
+    color:#101010;
+    font:inherit;
+    font-weight:bold;
+    cursor:pointer;
+    transition:transform .25s, box-shadow .25s, background .25s;
+    box-shadow:0 0 16px rgba(57,255,20,.35);
+}
+
+.quiz-restart:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 0 25px var(--verde);
+}
+
+.quiz-restart:focus-visible{
+    outline:3px solid var(--branco);
+    outline-offset:3px;
+}
