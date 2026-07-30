@@ -333,6 +333,7 @@ function mostrarErroQuiz() {
 
 function carregarPergunta() {
 
+    caixaQuiz.classList.remove("erro-quiz");
     const atual = perguntas[perguntaAtual];
 
     tituloPergunta.textContent = atual.pergunta;
@@ -422,7 +423,7 @@ function finalizarQuiz() {
         <h3>${pontos} / ${perguntas.length}</h3>
         <p>${mensagem}</p>
         <br>
-        <button onclick="reiniciarQuiz()">Refazer Quiz</button>
+        <button class="quiz-restart" type="button" onclick="reiniciarQuiz()">↻ Refazer Quiz</button>
     `;
 
 }
