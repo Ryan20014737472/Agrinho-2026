@@ -1343,3 +1343,19 @@ form{
         display:flex;
     }
 }
+
+
+/* No celular, a navegação fica oculta para priorizar o conteúdo */
+@media (max-width: 600px) {
+    header{
+        padding:12px;
+    }
+
+    header h1{
+        margin-bottom:0;
+    }
+
+    header nav{
+        display:none;
+    }
+}
