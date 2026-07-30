@@ -439,3 +439,37 @@ function reiniciarQuiz() {
 
 carregarPergunta();
 
+
+
+// ===========================
+// CALCULADORA SUSTENTÁVEL
+// ===========================
+
+const campoTorneiras = document.getElementById("torneiras");
+const campoArroz = document.getElementById("pes-arroz");
+const resultadoAgua = document.getElementById("resultadoAgua");
+const resultadoArroz = document.getElementById("resultadoArroz");
+
+function numeroPositivo(campo) {
+    return Math.max(0, Number(campo.value) || 0);
+}
+
+function calcularAgua() {
+    const torneiras = numeroPositivo(campoTorneiras);
+    const litrosPorMes = torneiras * 15 * 30;
+    resultadoAgua.textContent = `💧 Ao consertar ${torneiras} torneira(s), você pode economizar cerca de ${litrosPorMes.toLocaleString("pt-BR")} litros de água por mês.`;
+}
+
+function calcularArroz() {
+    const pes = numeroPositivo(campoArroz);
+    const quilos = pes * 0.03;
+    resultadoArroz.textContent = `🌾 ${pes.toLocaleString("pt-BR")} pé(s) de arroz podem produzir aproximadamente ${quilos.toLocaleString("pt-BR", { maximumFractionDigits: 2 })} kg de arroz.`;
+}
+
+document.querySelector('[data-calculo="agua"]')?.addEventListener("click", calcularAgua);
+document.querySelector('[data-calculo="arroz"]')?.addEventListener("click", calcularArroz);
+
+if (campoTorneiras && campoArroz) {
+    calcularAgua();
+    calcularArroz();
+}
