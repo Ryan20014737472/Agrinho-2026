@@ -79,38 +79,41 @@ if (explorar) {
 // FORMULÁRIO
 // ===========================
 
-const formulario = document.querySelector("form");
+const formulario = document.getElementById("formulario-contato");
 
 if (formulario) {
+    const avisoFormulario = document.getElementById("mensagemFormulario");
+    let temporizadorAviso;
+
+    function mostrarAviso(texto, tipo = "sucesso") {
+        clearTimeout(temporizadorAviso);
+        avisoFormulario.textContent = texto;
+        avisoFormulario.classList.toggle("erro", tipo === "erro");
+        avisoFormulario.hidden = false;
+
+        temporizadorAviso = setTimeout(() => {
+            avisoFormulario.hidden = true;
+        }, 5000);
+    }
 
     formulario.addEventListener("submit", (e) => {
-
         e.preventDefault();
 
-        const nome = formulario.querySelector('input[type="text"]').value.trim();
-        const email = formulario.querySelector('input[type="email"]').value.trim();
+        const campos = [...formulario.querySelectorAll("[required]")];
+        const campoInvalido = campos.find((campo) => !campo.value.trim() || !campo.checkValidity());
 
-        if (!nome || !email) {
+        campos.forEach((campo) => campo.removeAttribute("aria-invalid"));
 
-            alert("Preencha todos os campos obrigatórios.");
+        if (campoInvalido) {
+            campoInvalido.setAttribute("aria-invalid", "true");
+            campoInvalido.focus();
+            mostrarAviso("Complete todos os campos corretamente para enviar sua mensagem.", "erro");
             return;
-
         }
 
-        const mensagem = document.getElementById("mensagemSucesso");
-
-mensagem.style.display = "block";
-
-formulario.reset();
-
-setTimeout(() => {
-
-    mensagem.style.display = "none";
-
-}, 5000);
-
+        mostrarAviso("Mensagem enviada com sucesso! Obrigado por apoiar um futuro sustentável.");
+        formulario.reset();
     });
-
 }
 // ===========================
 // ESTATÍSTICAS ANIMADAS
