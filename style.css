@@ -1620,3 +1620,16 @@ form{
         grid-template-columns:1fr;
     }
 }
+
+
+/* Remove as setas nativas dos campos numéricos */
+.calculadora-card input[type="number"]{
+    appearance:textfield;
+    -moz-appearance:textfield;
+}
+
+.calculadora-card input[type="number"]::-webkit-inner-spin-button,
+.calculadora-card input[type="number"]::-webkit-outer-spin-button{
+    -webkit-appearance:none;
+    margin:0;
+}
