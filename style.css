@@ -1120,3 +1120,177 @@ form{
     }
 
     }
+
+
+/* =========================================
+   AJUSTES PARA CELULARES
+========================================= */
+@media (max-width: 600px) {
+    html{
+        font-size: 15px;
+    }
+
+    header{
+        padding: 14px 12px;
+    }
+
+    header h1{
+        margin-bottom: 14px;
+        font-size: clamp(1.45rem, 7vw, 1.9rem);
+        line-height: 1.15;
+    }
+
+    nav{
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:8px;
+    }
+
+    nav a{
+        width:auto;
+        padding:10px 7px;
+        font-size:.82rem;
+        white-space:nowrap;
+    }
+
+    .theme-btn{
+        grid-column:1 / -1;
+        justify-self:center;
+        width:42px;
+        height:42px;
+    }
+
+    section,
+    .estatisticas{
+        padding:52px 18px;
+    }
+
+    section h2{
+        margin-bottom:25px;
+        font-size:clamp(1.75rem, 8vw, 2.15rem);
+        line-height:1.2;
+    }
+
+    .banner{
+        min-height:66vh;
+        padding:55px 18px;
+    }
+
+    .banner-content{
+        padding:28px 20px;
+        border-radius:18px;
+    }
+
+    .banner h2{
+        font-size:clamp(2rem, 10vw, 2.5rem);
+        line-height:1.12;
+        margin-bottom:18px;
+    }
+
+    .banner p{
+        margin-bottom:25px;
+        font-size:1rem;
+        line-height:1.65;
+    }
+
+    .btn,
+    form button{
+        min-height:50px;
+        padding:14px 18px;
+    }
+
+    .cards{
+        gap:18px;
+    }
+
+    .card{
+        padding:22px 18px;
+        border-radius:16px;
+    }
+
+    .card:hover{
+        transform:none;
+    }
+
+    .imagem-site{
+        margin:25px auto;
+        border-width:3px;
+        border-radius:15px;
+    }
+
+    .estatisticas{
+        grid-template-columns:1fr;
+        gap:16px;
+        margin:0;
+    }
+
+    .numero{
+        padding:24px 18px;
+        border-radius:16px;
+    }
+
+    .numero h2{
+        font-size:2.45rem;
+    }
+
+    .quiz-box,
+    form{
+        padding:24px 18px;
+        border-radius:16px;
+    }
+
+    .quiz-btn{
+        min-height:52px;
+        padding:12px;
+        text-align:left;
+    }
+
+    input,
+    textarea{
+        margin:10px 0;
+        padding:14px;
+        font-size:16px;
+    }
+
+    .mensagem-formulario{
+        align-items:flex-start;
+        font-size:.95rem;
+        line-height:1.45;
+    }
+
+    #btnTopo{
+        right:16px;
+        bottom:16px;
+        width:48px;
+        height:48px;
+        font-size:21px;
+    }
+
+    footer{
+        margin-top:35px;
+        padding:28px 18px;
+    }
+}
+
+@media (max-width: 380px) {
+    nav{
+        grid-template-columns:1fr;
+    }
+
+    nav a{
+        padding:9px;
+        font-size:.9rem;
+    }
+
+    section,
+    .estatisticas{
+        padding-left:14px;
+        padding-right:14px;
+    }
+
+    .banner-content,
+    .quiz-box,
+    form{
+        padding:20px 14px;
+    }
+}
