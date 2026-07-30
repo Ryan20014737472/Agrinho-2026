@@ -1294,3 +1294,52 @@ form{
         padding:20px 14px;
     }
 }
+
+
+/* Menu compacto em celulares */
+@media (max-width: 600px) {
+    header{
+        padding:8px 10px 9px;
+    }
+
+    header h1{
+        margin-bottom:7px;
+        font-size:clamp(1.05rem, 5vw, 1.35rem);
+    }
+
+    nav{
+        display:flex;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        gap:5px;
+        overflow-x:auto;
+        padding:1px 0 4px;
+        scrollbar-width:none;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    nav::-webkit-scrollbar{
+        display:none;
+    }
+
+    nav a{
+        flex:0 0 auto;
+        width:auto;
+        padding:7px 9px;
+        font-size:.72rem;
+        line-height:1;
+    }
+
+    .theme-btn{
+        flex:0 0 34px;
+        width:34px;
+        height:34px;
+        font-size:15px;
+    }
+}
+
+@media (max-width: 380px) {
+    nav{
+        display:flex;
+    }
+}
