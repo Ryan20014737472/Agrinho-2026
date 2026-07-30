@@ -1359,3 +1359,52 @@ form{
         display:none;
     }
 }
+
+
+/* =========================================
+   EFEITOS INTERATIVOS
+========================================= */
+.theme-btn.tema-animando{
+    animation:trocarTema .55s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+@keyframes trocarTema{
+    0%{ transform:rotate(0) scale(1); }
+    45%{ transform:rotate(180deg) scale(1.25); }
+    100%{ transform:rotate(360deg) scale(1); }
+}
+
+.confete{
+    position:fixed;
+    top:-12px;
+    z-index:100000;
+    width:10px;
+    height:16px;
+    border-radius:3px;
+    pointer-events:none;
+    animation:cairConfete 1.6s ease-in forwards;
+}
+
+@keyframes cairConfete{
+    0%{ transform:translate3d(0, -20px, 0) rotate(0deg); opacity:1; }
+    100%{ transform:translate3d(var(--deslocamento), 105vh, 0) rotate(720deg); opacity:0; }
+}
+
+.quiz-box.erro-quiz{
+    animation:erroQuiz .42s ease;
+    box-shadow:0 0 30px rgba(255,68,68,.75);
+}
+
+@keyframes erroQuiz{
+    0%, 100%{ transform:translateX(0); }
+    20%, 60%{ transform:translateX(-10px); }
+    40%, 80%{ transform:translateX(10px); }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .theme-btn.tema-animando,
+    .quiz-box.erro-quiz,
+    .confete{
+        animation:none;
+    }
+}
