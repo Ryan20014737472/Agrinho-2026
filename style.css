@@ -1531,3 +1531,92 @@ form{
         border-radius:16px;
     }
 }
+
+
+/* Visual de calculadora digital */
+.calculadora-grid{
+    grid-template-columns:repeat(2, minmax(320px, 1fr));
+    align-items:stretch;
+}
+
+.calculadora-card{
+    position:relative;
+    overflow:hidden;
+    padding:32px;
+    border:3px solid #39ff14;
+    border-radius:12px;
+    background:
+        linear-gradient(145deg, rgba(57,255,20,.10), transparent 32%),
+        #090b09;
+    box-shadow:
+        inset 0 0 22px rgba(57,255,20,.08),
+        0 0 24px rgba(57,255,20,.28);
+}
+
+.calculadora-card::before{
+    content:"CALCULADORA • ESTIMATIVA";
+    display:block;
+    margin:-5px 0 22px;
+    color:#39ff14;
+    font-family:Consolas, "Courier New", monospace;
+    font-size:.72rem;
+    letter-spacing:.12em;
+}
+
+.calculadora-card h3,
+.calculadora-card p,
+.calculadora-card label,
+.calculadora-card small{
+    font-family:Consolas, "Courier New", monospace;
+}
+
+.calculadora-card input{
+    border:2px solid #39ff14;
+    border-radius:7px;
+    background:#020302;
+    color:#39ff14;
+    font-family:Consolas, "Courier New", monospace;
+    font-size:1.5rem;
+    font-weight:bold;
+    text-align:right;
+    box-shadow:inset 0 0 12px rgba(57,255,20,.16);
+}
+
+.calculadora-card input:focus{
+    outline:none;
+    box-shadow:0 0 16px rgba(57,255,20,.65), inset 0 0 12px rgba(57,255,20,.16);
+}
+
+.calculadora-btn{
+    border:2px solid #39ff14;
+    border-radius:7px;
+    background:#202620;
+    color:#39ff14;
+    font-family:Consolas, "Courier New", monospace;
+    letter-spacing:.05em;
+    box-shadow:inset 0 -3px 0 rgba(0,0,0,.45);
+}
+
+.calculadora-btn:hover{
+    background:#39ff14;
+    color:#101010;
+}
+
+.resultado-calculadora{
+    min-height:80px;
+    border:2px inset rgba(57,255,20,.75);
+    border-radius:6px;
+    background:#010301;
+    color:#7dff62;
+    font-family:Consolas, "Courier New", monospace;
+    font-size:.95rem;
+    line-height:1.45;
+    text-shadow:0 0 7px rgba(125,255,98,.7);
+    box-shadow:inset 0 0 18px rgba(57,255,20,.12);
+}
+
+@media (max-width:700px){
+    .calculadora-grid{
+        grid-template-columns:1fr;
+    }
+}
