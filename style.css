@@ -1661,3 +1661,33 @@ form{
 .light-theme .resultado-calculadora{
     color:#7dff62;
 }
+
+
+/* Botão de tema disponível no canto superior esquerdo no celular */
+@media (max-width:600px){
+    header{
+        position:sticky;
+    }
+
+    header nav{
+        display:block;
+        position:absolute;
+        top:9px;
+        left:10px;
+        width:auto;
+        padding:0;
+        overflow:visible;
+    }
+
+    header nav a{
+        display:none;
+    }
+
+    header .theme-btn{
+        display:grid;
+        place-items:center;
+        width:36px;
+        height:36px;
+        font-size:16px;
+    }
+}
