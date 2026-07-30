@@ -1633,3 +1633,31 @@ form{
     -webkit-appearance:none;
     margin:0;
 }
+
+
+/* Contraste da calculadora no tema claro */
+.light-theme .calculadora-intro{
+    color:#222;
+}
+
+.light-theme .calculadora-card{
+    background:
+        linear-gradient(145deg, rgba(57,255,20,.12), transparent 32%),
+        #090b09;
+    color:#f5fff2;
+}
+
+.light-theme .calculadora-card p,
+.light-theme .calculadora-card label,
+.light-theme .calculadora-card small{
+    color:#f5fff2;
+}
+
+.light-theme .calculadora-card small{
+    color:#c4d9c2;
+}
+
+.light-theme .calculadora-card h3,
+.light-theme .resultado-calculadora{
+    color:#7dff62;
+}
