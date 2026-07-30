@@ -456,13 +456,13 @@ function numeroPositivo(campo) {
 
 function calcularAgua() {
     const torneiras = numeroPositivo(campoTorneiras);
-    const litrosPorMes = torneiras * 15 * 30;
+    const litrosPorMes = torneiras * 45 * 30;
     resultadoAgua.textContent = `💧 Ao consertar ${torneiras} torneira(s), você pode economizar cerca de ${litrosPorMes.toLocaleString("pt-BR")} litros de água por mês.`;
 }
 
 function calcularArroz() {
     const pes = numeroPositivo(campoArroz);
-    const quilos = pes * 0.03;
+    const quilos = pes * 0.015;
     resultadoArroz.textContent = `🌾 ${pes.toLocaleString("pt-BR")} pé(s) de arroz podem produzir aproximadamente ${quilos.toLocaleString("pt-BR", { maximumFractionDigits: 2 })} kg de arroz.`;
 }
 
