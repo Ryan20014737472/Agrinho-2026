@@ -193,6 +193,9 @@ if (botaoTema) {
 
     botaoTema.addEventListener("click", () => {
 
+        botaoTema.classList.remove("tema-animando");
+        void botaoTema.offsetWidth;
+        botaoTema.classList.add("tema-animando");
         document.body.classList.toggle("light-theme");
 
         if (document.body.classList.contains("light-theme")) {
@@ -305,6 +308,28 @@ let pontos = 0;
 const tituloPergunta = document.getElementById("pergunta");
 const botoesQuiz = document.querySelectorAll(".quiz-btn");
 const resultadoQuiz = document.getElementById("resultadoQuiz");
+const caixaQuiz = document.querySelector(".quiz-box");
+
+function soltarConfetes() {
+    const cores = ["#39ff14", "#ffffff", "#ffd93d", "#63c5da", "#ff7eb3"];
+
+    for (let indice = 0; indice < 28; indice++) {
+        const confete = document.createElement("span");
+        confete.className = "confete";
+        confete.style.left = `${Math.random() * 100}vw`;
+        confete.style.background = cores[indice % cores.length];
+        confete.style.setProperty("--deslocamento", `${(Math.random() - .5) * 180}px`);
+        confete.style.animationDelay = `${Math.random() * .18}s`;
+        document.body.appendChild(confete);
+        confete.addEventListener("animationend", () => confete.remove());
+    }
+}
+
+function mostrarErroQuiz() {
+    caixaQuiz.classList.remove("erro-quiz");
+    void caixaQuiz.offsetWidth;
+    caixaQuiz.classList.add("erro-quiz");
+}
 
 function carregarPergunta() {
 
@@ -340,6 +365,7 @@ function responder(opcao) {
         botoesQuiz[opcao].style.color = "black";
 
         resultadoQuiz.innerHTML = "✅ Resposta correta!";
+        soltarConfetes();
 
     } else {
 
@@ -348,6 +374,7 @@ function responder(opcao) {
         botoesQuiz[perguntas[perguntaAtual].correta].style.background = "#39ff14";
 
         resultadoQuiz.innerHTML = "❌ Resposta incorreta.";
+        mostrarErroQuiz();
 
     }
 
