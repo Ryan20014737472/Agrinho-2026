@@ -140,7 +140,9 @@ footer>p{color:rgba(255,255,255,.58);font-size:.88rem;text-align:center}
 footer>a:last-child{color:var(--lime);font-size:.85rem}
 .footer-brand{min-width:190px}
 
-.reveal{opacity:1;transform:none}\n.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}\n.js .reveal.visible{opacity:1;transform:none}
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.visible{opacity:1;transform:none}
 
 @media(max-width:900px){
   .menu-toggle{display:block}
