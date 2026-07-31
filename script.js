@@ -1,6 +1,13 @@
+// ==================================================
+// 01. ATALHOS PARA SELEÇÃO DE ELEMENTOS
+// ==================================================
 const $ = (selector, context = document) => context.querySelector(selector);
 const $$ = (selector, context = document) => [...context.querySelectorAll(selector)];
 
+// ==================================================
+// 02. MENU RESPONSIVO
+// Abre e fecha a navegação em telas menores.
+// ==================================================
 const menuButton = $("#menu-toggle");
 const menu = $("#menu");
 menuButton.addEventListener("click", () => {
@@ -12,6 +19,10 @@ $$("nav a").forEach(link => link.addEventListener("click", () => {
   menuButton.setAttribute("aria-expanded", "false");
 }));
 
+// ==================================================
+// 03. TEMA CLARO E ESCURO
+// Aplica, anuncia e salva a preferência de aparência.
+// ==================================================
 const themeButton = $("#theme-toggle");
 const themeStatus = $(".theme-status", themeButton);
 const colorScheme = matchMedia("(prefers-color-scheme: dark)");
@@ -38,12 +49,20 @@ colorScheme.addEventListener?.("change", event => {
   if (!localStorage.getItem("agro-theme")) applyTheme(event.matches ? "dark" : "light");
 });
 
+// ==================================================
+// 04. PROGRESSO DE LEITURA
+// Atualiza a barra superior conforme a rolagem da página.
+// ==================================================
 function updateScroll() {
   const available = document.documentElement.scrollHeight - innerHeight;
   $("#progress-bar").style.width = available > 0 ? (scrollY / available * 100) + "%" : "0%";
 }
 addEventListener("scroll", updateScroll, { passive: true });
 
+// ==================================================
+// 05. ANIMAÇÕES DE ENTRADA
+// Revela elementos quando eles entram na área visível.
+// ==================================================
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -54,6 +73,10 @@ const revealObserver = new IntersectionObserver(entries => {
 }, { threshold: .12 });
 $$(".reveal").forEach(element => revealObserver.observe(element));
 
+// ==================================================
+// 06. CONTADORES ANIMADOS
+// Anima os indicadores numéricos apenas uma vez.
+// ==================================================
 const countObserver = new IntersectionObserver(entries => {
   if (!entries[0].isIntersecting) return;
   $$(".counter").forEach(counter => {
@@ -72,7 +95,10 @@ const countObserver = new IntersectionObserver(entries => {
 }, { threshold: .4 });
 countObserver.observe($(".stats-grid"));
 
-const sections = $$("main section[id]");
+// ==================================================
+// 07. DESTAQUE DA SEÇÃO ATIVA NO MENU
+// ==================================================
+const sections = $("main section[id]");
 const navigationLinks = $$("nav a");
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -82,6 +108,10 @@ const sectionObserver = new IntersectionObserver(entries => {
 }, { rootMargin: "-30% 0px -60%", threshold: 0 });
 sections.forEach(section => sectionObserver.observe(section));
 
+// ==================================================
+// 08. PAINEL DE TECNOLOGIAS AGRÍCOLAS
+// Centraliza os dados e troca o conteúdo ao selecionar uma aba.
+// ==================================================
 const solutions = {
   drones: {
     number: "01",
@@ -129,6 +159,10 @@ $$("[data-solution]").forEach(button => button.addEventListener("click", () => {
   $("#solution-panel").focus({ preventScroll: true });
 }));
 
+// ==================================================
+// 09. QUIZ DE SUSTENTABILIDADE
+// Controla perguntas, respostas, explicações e pontuação.
+// ==================================================
 const questions = [
   { question: "Qual tecnologia aplica água somente quando o solo precisa?", options: ["Irrigação inteligente", "Colheita manual", "Queimada controlada"], answer: 0, explanation: "Sensores de umidade tornam a irrigação mais precisa." },
   { question: "Por que a rotação de culturas protege o solo?", options: ["Aumenta a erosão", "Repõe nutrientes e quebra ciclos de pragas", "Elimina toda a biodiversidade"], answer: 1, explanation: "Alternar culturas melhora a fertilidade e ajuda no controle de pragas." },
@@ -196,6 +230,10 @@ $("#quiz-next").addEventListener("click", () => {
 });
 renderQuestion();
 
+// ==================================================
+// 10. SIMULADOR DE ECONOMIA DE ÁGUA
+// Recalcula a estimativa em tempo real a partir dos controles.
+// ==================================================
 const format = number => Math.round(number).toLocaleString("pt-BR");
 function updateSimulation() {
   const area = Number($("#area").value);
@@ -211,6 +249,10 @@ function updateSimulation() {
 $$('#water-form input[type="range"]').forEach(input => input.addEventListener("input", updateSimulation));
 updateSimulation();
 
+// ==================================================
+// 11. COMPROMISSO SUSTENTÁVEL
+// Salva localmente a atitude escolhida pelo visitante.
+// ==================================================
 const pledgeForm = $("#pledge-form");
 const savedPledge = localStorage.getItem("agro-pledge");
 if (savedPledge) {
@@ -229,7 +271,10 @@ pledgeForm.addEventListener("submit", event => {
   $("#pledge-message").textContent = "Compromisso registrado: " + selected + "!";
 });
 
-// Botão flutuante de retorno ao início
+// ==================================================
+// 12. BOTÃO FLUTUANTE DE RETORNO AO INÍCIO
+// Exibe o controle após a rolagem e respeita movimento reduzido.
+// ==================================================
 const backToTopButton = document.getElementById("back-to-top");
 
 if (backToTopButton) {
