@@ -1,475 +1,213 @@
-// ===========================================
-// AGRO FORTE - FUTURO SUSTENTÁVEL
-// Desenvolvido por Ryan Batistel
-// ===========================================
+const $ = (selector, context = document) => context.querySelector(selector);
+const $$ = (selector, context = document) => [...context.querySelectorAll(selector)];
 
-console.log("Site carregado com sucesso!");
+const menuButton = $("#menu-toggle");
+const menu = $("#menu");
+menuButton.addEventListener("click", () => {
+  const open = menu.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", String(open));
+});
+$$("nav a").forEach(link => link.addEventListener("click", () => {
+  menu.classList.remove("open");
+  menuButton.setAttribute("aria-expanded", "false");
+}));
 
-// ===========================
-// BOTÃO VOLTAR AO TOPO
-// ===========================
+const themeButton = $("#theme-toggle");
+const savedTheme = localStorage.getItem("agro-theme");
+const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
+if (savedTheme === "dark" || (!savedTheme && prefersDark)) document.body.classList.add("dark");
+themeButton.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("agro-theme", document.body.classList.contains("dark") ? "dark" : "light");
+});
 
-const btnTopo = document.getElementById("btnTopo");
+function updateScroll() {
+  const available = document.documentElement.scrollHeight - innerHeight;
+  $("#progress-bar").style.width = available > 0 ? (scrollY / available * 100) + "%" : "0%";
+}
+addEventListener("scroll", updateScroll, { passive: true });
 
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 350) {
-        btnTopo.style.display = "flex";
-    } else {
-        btnTopo.style.display = "none";
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
     }
+  });
+}, { threshold: .12 });
+$$(".reveal").forEach(element => revealObserver.observe(element));
 
-});
-
-btnTopo.addEventListener("click", () => {
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-});
-
-// ===========================
-// ANIMAÇÃO DOS CARDS
-// ===========================
-
-document.querySelectorAll(".card").forEach(card => {
-
-    card.addEventListener("mouseenter", () => {
-
-        card.style.transform = "translateY(-8px)";
-        card.style.boxShadow = "0 0 25px rgba(57,255,20,.8)";
-
-    });
-
-    card.addEventListener("mouseleave", () => {
-
-        card.style.transform = "translateY(0)";
-        card.style.boxShadow = "";
-
-    });
-
-});
-
-// ===========================
-// BOTÃO CONHEÇA O PROJETO
-// ===========================
-
-const explorar = document.querySelector(".btn");
-
-if (explorar) {
-
-    setInterval(() => {
-
-        explorar.animate([
-            { transform: "scale(1)" },
-            { transform: "scale(1.07)" },
-            { transform: "scale(1)" }
-        ], {
-            duration: 800,
-            easing: "ease"
-        });
-
-    }, 3000);
-
-}
-
-// ===========================
-// FORMULÁRIO
-// ===========================
-
-const formulario = document.getElementById("formulario-contato");
-
-if (formulario) {
-    const avisoFormulario = document.getElementById("mensagemFormulario");
-    let temporizadorAviso;
-
-    function mostrarAviso(texto, tipo = "sucesso") {
-        clearTimeout(temporizadorAviso);
-        avisoFormulario.textContent = texto;
-        avisoFormulario.classList.toggle("erro", tipo === "erro");
-        avisoFormulario.hidden = false;
-
-        temporizadorAviso = setTimeout(() => {
-            avisoFormulario.hidden = true;
-        }, 5000);
+const countObserver = new IntersectionObserver(entries => {
+  if (!entries[0].isIntersecting) return;
+  $$(".counter").forEach(counter => {
+    const target = Number(counter.dataset.target);
+    const started = performance.now();
+    const duration = 1200;
+    function tick(now) {
+      const progress = Math.min((now - started) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = Math.round(target * eased).toLocaleString("pt-BR");
+      if (progress < 1) requestAnimationFrame(tick);
     }
-
-    formulario.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const campos = [...formulario.querySelectorAll("[required]")];
-        const campoInvalido = campos.find((campo) => !campo.value.trim() || !campo.checkValidity());
-
-        campos.forEach((campo) => campo.removeAttribute("aria-invalid"));
-
-        if (campoInvalido) {
-            campoInvalido.setAttribute("aria-invalid", "true");
-            campoInvalido.focus();
-            mostrarAviso("Complete todos os campos corretamente para enviar sua mensagem.", "erro");
-            return;
-        }
-
-        mostrarAviso("Mensagem enviada com sucesso! Obrigado por apoiar um futuro sustentável.");
-        formulario.reset();
-    });
-}
-// ===========================
-// ESTATÍSTICAS ANIMADAS
-// ===========================
-
-const contadores = document.querySelectorAll(".contador");
-
-function animarContadores() {
-
-    contadores.forEach(contador => {
-
-        const alvo = Number(contador.dataset.target);
-        let valor = 0;
-
-        const velocidade = Math.max(1, Math.ceil(alvo / 120));
-
-        function atualizar() {
-
-            valor += velocidade;
-
-            if (valor < alvo) {
-
-                contador.textContent = valor.toLocaleString("pt-BR");
-                requestAnimationFrame(atualizar);
-
-            } else {
-
-                contador.textContent = alvo.toLocaleString("pt-BR");
-
-            }
-
-        }
-
-        atualizar();
-
-    });
-
-}
-
-const secaoEstatisticas = document.querySelector(".estatisticas");
-
-if (secaoEstatisticas) {
-
-    const observer = new IntersectionObserver((entries) => {
-
-        if (entries[0].isIntersecting) {
-
-            animarContadores();
-            observer.disconnect();
-
-        }
-
-    });
-
-    observer.observe(secaoEstatisticas);
-
-}
-
-// ===========================
-// TEMA CLARO / ESCURO
-// ===========================
-
-const botaoTema = document.getElementById("theme-toggle");
-
-if (botaoTema) {
-
-    if (localStorage.getItem("tema") === "claro") {
-
-        document.body.classList.add("light-theme");
-        botaoTema.textContent = "☀️";
-
-    } else {
-
-        botaoTema.textContent = "🌙";
-
-    }
-
-    botaoTema.addEventListener("click", () => {
-
-        botaoTema.classList.remove("tema-animando");
-        void botaoTema.offsetWidth;
-        botaoTema.classList.add("tema-animando");
-        document.body.classList.toggle("light-theme");
-
-        if (document.body.classList.contains("light-theme")) {
-
-            localStorage.setItem("tema", "claro");
-            botaoTema.textContent = "☀️";
-
-        } else {
-
-            localStorage.setItem("tema", "escuro");
-            botaoTema.textContent = "🌙";
-
-        }
-
-    });
-
-}
-
-// ===========================
-// ANIMAÇÃO AO APARECER
-// ===========================
-
-const elementos = document.querySelectorAll(".card, .numero, .quiz-box");
-
-const observerAnimacao = new IntersectionObserver((entries) => {
-
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-
-        }
-
-    });
-
-});
-
-elementos.forEach(elemento => {
-
-    elemento.style.opacity = "0";
-    elemento.style.transform = "translateY(40px)";
-    elemento.style.transition = "0.7s";
-
-    observerAnimacao.observe(elemento);
-
-});
-// ===========================
-// QUIZ DA SUSTENTABILIDADE
-// ===========================
-
-const perguntas = [
-
-{
-    pergunta: "1. Qual tecnologia ajuda a economizar água na agricultura?",
-    opcoes: [
-        "Chuva",
-        "Irrigação Inteligente",
-        "Regadores manuais"
-    ],
-    correta: 1
-},
-
-{
-    pergunta: "2. Qual prática ajuda a preservar o solo?",
-    opcoes: [
-        "Usar máquinas agrícolas em excesso",
-        "Regar constantemente",
-        "Rotação de culturas"
-    ],
-    correta: 2
-},
-
-{
-    pergunta: "3. Qual destas é uma fonte de energia renovável?",
-    opcoes: [
-        "Carvão",
-        "Energia Solar",
-        "Gasolina"
-    ],
-    correta: 1
-},
-
-{
-    pergunta: "4. O uso de drones agrícolas serve para:",
-    opcoes: [
-        "Monitorar plantações",
-        "Derrubar árvores",
-        "Aumentar queimadas"
-    ],
-    correta: 0
-},
-
-{
-    pergunta: "5. O principal objetivo da sustentabilidade é:",
-    opcoes: [
-        "Produzir preservando o meio ambiente",
-        "Explorar todos os recursos naturais",
-        "Aumentar o desmatamento"
-    ],
-    correta: 0
-}
-
+    requestAnimationFrame(tick);
+  });
+  countObserver.disconnect();
+}, { threshold: .4 });
+countObserver.observe($(".stats-grid"));
+
+const sections = $$("main section[id]");
+const navigationLinks = $$("nav a");
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    navigationLinks.forEach(link => link.classList.toggle("active", link.hash === "#" + entry.target.id));
+  });
+}, { rootMargin: "-30% 0px -60%", threshold: 0 });
+sections.forEach(section => sectionObserver.observe(section));
+
+const solutions = {
+  drones: {
+    number: "01",
+    title: "Olhos no céu, decisões no solo",
+    text: "Drones mapeiam áreas extensas, identificam pragas e falhas no plantio antes que o problema se espalhe. Assim, o produtor age somente onde é necessário.",
+    benefits: ["Monitoramento rápido e preciso", "Menor desperdício de insumos", "Decisões baseadas em imagens"],
+    image: "Assente/drone-ia.png",
+    alt: "Drone monitorando uma plantação"
+  },
+  ia: {
+    number: "02",
+    title: "Dados que antecipam o amanhã",
+    text: "A inteligência artificial combina histórico da lavoura, previsão do tempo e imagens para detectar padrões e apoiar escolhas mais seguras.",
+    benefits: ["Previsão de pragas e doenças", "Planejamento da colheita", "Uso eficiente de recursos"],
+    image: "Assente/agricultura-ia.png",
+    alt: "Tecnologia de inteligência artificial aplicada à agricultura"
+  },
+  irrigacao: {
+    number: "03",
+    title: "Cada gota no lugar certo",
+    text: "Sensores de umidade e controladores automáticos entregam água conforme a necessidade real de cada área, reduzindo perdas.",
+    benefits: ["Economia de água e energia", "Menos estresse para as plantas", "Controle em tempo real"],
+    image: "Assente/agricultura-ia.png",
+    alt: "Plantação acompanhada por sistema inteligente"
+  },
+  satelites: {
+    number: "04",
+    title: "Uma visão ampla da lavoura",
+    text: "Satélites e sensores acompanham clima, vigor das plantas e condições do solo, convertendo grandes áreas em informações claras.",
+    benefits: ["Acompanhamento de áreas extensas", "Alertas antecipados", "Histórico para comparar safras"],
+    image: "Assente/drone-ia.png",
+    alt: "Monitoramento remoto de uma área agrícola"
+  }
+};
+
+$$("[data-solution]").forEach(button => button.addEventListener("click", () => {
+  const data = solutions[button.dataset.solution];
+  $$("[data-solution]").forEach(item => item.setAttribute("aria-selected", String(item === button)));
+  $("#solution-number").textContent = data.number;
+  $("#solution-title").textContent = data.title;
+  $("#solution-text").textContent = data.text;
+  $("#solution-benefits").innerHTML = data.benefits.map(item => "<li>" + item + "</li>").join("");
+  $("#solution-image").src = data.image;
+  $("#solution-image").alt = data.alt;
+  $("#solution-panel").focus({ preventScroll: true });
+}));
+
+const questions = [
+  { question: "Qual tecnologia aplica água somente quando o solo precisa?", options: ["Irrigação inteligente", "Colheita manual", "Queimada controlada"], answer: 0, explanation: "Sensores de umidade tornam a irrigação mais precisa." },
+  { question: "Por que a rotação de culturas protege o solo?", options: ["Aumenta a erosão", "Repõe nutrientes e quebra ciclos de pragas", "Elimina toda a biodiversidade"], answer: 1, explanation: "Alternar culturas melhora a fertilidade e ajuda no controle de pragas." },
+  { question: "Como drones ajudam uma produção sustentável?", options: ["Aplicando insumos em toda parte", "Substituindo toda decisão humana", "Localizando problemas para uma ação direcionada"], answer: 2, explanation: "O mapeamento permite agir apenas nos pontos necessários." },
+  { question: "Qual fonte pode gerar energia limpa na propriedade rural?", options: ["Carvão mineral", "Energia solar", "Gasolina"], answer: 1, explanation: "Painéis solares aproveitam uma fonte renovável e reduzem emissões." },
+  { question: "O que fortalece a relação campo-cidade?", options: ["Consumo consciente e valorização da produção responsável", "Desperdício de alimentos", "Uso ilimitado de recursos"], answer: 0, explanation: "Consumidores informados incentivam práticas responsáveis em toda a cadeia." }
 ];
+let questionIndex = 0;
+let score = 0;
+let answered = false;
 
-let perguntaAtual = 0;
-let pontos = 0;
-
-const tituloPergunta = document.getElementById("pergunta");
-const botoesQuiz = document.querySelectorAll(".quiz-btn");
-const resultadoQuiz = document.getElementById("resultadoQuiz");
-const caixaQuiz = document.querySelector(".quiz-box");
-
-function soltarConfetes() {
-    const cores = ["#39ff14", "#ffffff", "#ffd93d", "#63c5da", "#ff7eb3"];
-
-    for (let indice = 0; indice < 28; indice++) {
-        const confete = document.createElement("span");
-        confete.className = "confete";
-        confete.style.left = `${Math.random() * 100}vw`;
-        confete.style.background = cores[indice % cores.length];
-        confete.style.setProperty("--deslocamento", `${(Math.random() - .5) * 180}px`);
-        confete.style.animationDelay = `${Math.random() * .18}s`;
-        document.body.appendChild(confete);
-        confete.addEventListener("animationend", () => confete.remove());
-    }
+function renderQuestion() {
+  const item = questions[questionIndex];
+  answered = false;
+  $("#quiz-step").textContent = "Pergunta " + (questionIndex + 1) + " de " + questions.length;
+  $("#quiz-progress").style.width = ((questionIndex + 1) / questions.length * 100) + "%";
+  $("#quiz-score").textContent = score + " pts";
+  $("#quiz-question").textContent = item.question;
+  $("#quiz-feedback").textContent = "";
+  $("#quiz-next").hidden = true;
+  $("#quiz-options").innerHTML = item.options.map((option, index) =>
+    '<button type="button" data-option="' + index + '">' + String.fromCharCode(65 + index) + ". " + option + "</button>"
+  ).join("");
 }
 
-function mostrarErroQuiz() {
-    caixaQuiz.classList.remove("erro-quiz");
-    void caixaQuiz.offsetWidth;
-    caixaQuiz.classList.add("erro-quiz");
+$("#quiz-options").addEventListener("click", event => {
+  const button = event.target.closest("[data-option]");
+  if (!button || answered) return;
+  answered = true;
+  const selected = Number(button.dataset.option);
+  const item = questions[questionIndex];
+  const buttons = $$("#quiz-options button");
+  buttons.forEach(itemButton => itemButton.disabled = true);
+  buttons[item.answer].classList.add("correct");
+  if (selected === item.answer) {
+    score += 20;
+    $("#quiz-feedback").textContent = "Correto! " + item.explanation;
+  } else {
+    button.classList.add("wrong");
+    $("#quiz-feedback").textContent = "Quase! " + item.explanation;
+  }
+  $("#quiz-score").textContent = score + " pts";
+  $("#quiz-next").textContent = questionIndex === questions.length - 1 ? "Ver resultado" : "Próxima pergunta";
+  $("#quiz-next").hidden = false;
+});
+
+$("#quiz-next").addEventListener("click", () => {
+  if (questionIndex < questions.length - 1) {
+    questionIndex++;
+    renderQuestion();
+    return;
+  }
+  $("#quiz-step").textContent = "Desafio concluído";
+  $("#quiz-progress").style.width = "100%";
+  $("#quiz-question").textContent = score >= 80 ? "Excelente! Você cultiva boas ideias." : score >= 60 ? "Muito bem! Continue aprendendo." : "Toda mudança começa com conhecimento.";
+  $("#quiz-options").innerHTML = "";
+  $("#quiz-feedback").textContent = "Resultado final: " + score + " de 100 pontos.";
+  $("#quiz-next").textContent = "Refazer desafio";
+  $("#quiz-next").onclick = () => {
+    questionIndex = 0;
+    score = 0;
+    $("#quiz-next").onclick = null;
+    renderQuestion();
+  };
+});
+renderQuestion();
+
+const format = number => Math.round(number).toLocaleString("pt-BR");
+function updateSimulation() {
+  const area = Number($("#area").value);
+  const consumption = Number($("#consumption").value);
+  const efficiency = Number($("#efficiency").value);
+  const daily = area * consumption * efficiency / 100;
+  $("#area-output").textContent = format(area);
+  $("#consumption-output").textContent = format(consumption);
+  $("#efficiency-output").textContent = efficiency;
+  $("#water-result").textContent = format(daily) + " L";
+  $("#monthly-result").textContent = format(daily * 30) + " litros";
 }
+$$('#water-form input[type="range"]').forEach(input => input.addEventListener("input", updateSimulation));
+updateSimulation();
 
-function carregarPergunta() {
-
-    caixaQuiz.classList.remove("erro-quiz");
-    const atual = perguntas[perguntaAtual];
-
-    tituloPergunta.textContent = atual.pergunta;
-
-    botoesQuiz.forEach((botao, indice) => {
-
-        botao.style.display = "block";
-        botao.disabled = false;
-
-        botao.textContent = atual.opcoes[indice];
-
-        botao.style.background = "";
-        botao.style.color = "";
-
-    });
-
-    resultadoQuiz.innerHTML = "";
-
+const pledgeForm = $("#pledge-form");
+const savedPledge = localStorage.getItem("agro-pledge");
+if (savedPledge) {
+  const savedInput = pledgeForm.querySelector('[value="' + savedPledge + '"]');
+  if (savedInput) savedInput.checked = true;
+  $("#pledge-message").textContent = "Seu compromisso atual: " + savedPledge + ".";
 }
-
-function responder(opcao) {
-
-    botoesQuiz.forEach(botao => botao.disabled = true);
-
-    if (opcao === perguntas[perguntaAtual].correta) {
-
-        pontos++;
-
-        botoesQuiz[opcao].style.background = "#39ff14";
-        botoesQuiz[opcao].style.color = "black";
-
-        resultadoQuiz.innerHTML = "✅ Resposta correta!";
-        soltarConfetes();
-
-    } else {
-
-        botoesQuiz[opcao].style.background = "#ff4444";
-
-        botoesQuiz[perguntas[perguntaAtual].correta].style.background = "#39ff14";
-
-        resultadoQuiz.innerHTML = "❌ Resposta incorreta.";
-        mostrarErroQuiz();
-
-    }
-
-    setTimeout(() => {
-
-        perguntaAtual++;
-
-        if (perguntaAtual < perguntas.length) {
-
-            carregarPergunta();
-
-        } else {
-
-            finalizarQuiz();
-
-        }
-
-    }, 1500);
-
-}
-
-function finalizarQuiz() {
-
-    tituloPergunta.innerHTML = "🎉 Quiz Finalizado!";
-
-    botoesQuiz.forEach(botao => botao.style.display = "none");
-
-    let mensagem = "";
-
-    if (pontos === 5) {
-
-        mensagem = "Excelente! Você domina o assunto.";
-
-    } else if (pontos >= 3) {
-
-        mensagem = "Muito bem! Você conhece bastante sobre sustentabilidade.";
-
-    } else {
-
-        mensagem = "Continue estudando. Você pode melhorar!";
-
-    }
-
-    resultadoQuiz.innerHTML = `
-        <h3>${pontos} / ${perguntas.length}</h3>
-        <p>${mensagem}</p>
-        <br>
-        <button class="quiz-restart" type="button" onclick="reiniciarQuiz()">↻ Refazer Quiz</button>
-    `;
-
-}
-
-function reiniciarQuiz() {
-
-    perguntaAtual = 0;
-    pontos = 0;
-
-    carregarPergunta();
-
-}
-
-carregarPergunta();
-
-
-
-// ===========================
-// CALCULADORA SUSTENTÁVEL
-// ===========================
-
-const campoTorneiras = document.getElementById("torneiras");
-const campoArroz = document.getElementById("pes-arroz");
-const resultadoAgua = document.getElementById("resultadoAgua");
-const resultadoArroz = document.getElementById("resultadoArroz");
-
-function numeroPositivo(campo) {
-    return Math.max(0, Number(campo.value) || 0);
-}
-
-function calcularAgua() {
-    const torneiras = numeroPositivo(campoTorneiras);
-    const litrosPorMes = torneiras * 45 * 30;
-    resultadoAgua.textContent = `💧 Ao consertar ${torneiras} torneira(s), você pode economizar cerca de ${litrosPorMes.toLocaleString("pt-BR")} litros de água por mês.`;
-}
-
-function calcularArroz() {
-    const pes = numeroPositivo(campoArroz);
-    const quilos = pes * 0.015;
-    resultadoArroz.textContent = `🌾 ${pes.toLocaleString("pt-BR")} pé(s) de arroz podem produzir aproximadamente ${quilos.toLocaleString("pt-BR", { maximumFractionDigits: 2 })} kg de arroz.`;
-}
-
-document.querySelector('[data-calculo="agua"]')?.addEventListener("click", calcularAgua);
-document.querySelector('[data-calculo="arroz"]')?.addEventListener("click", calcularArroz);
-
-if (campoTorneiras && campoArroz) {
-    calcularAgua();
-    calcularArroz();
-}
+pledgeForm.addEventListener("submit", event => {
+  event.preventDefault();
+  const selected = pledgeForm.elements.pledge.value;
+  if (!selected) {
+    $("#pledge-message").textContent = "Escolha uma atitude para continuar.";
+    return;
+  }
+  localStorage.setItem("agro-pledge", selected);
+  $("#pledge-message").textContent = "Compromisso registrado: " + selected + "!";
+});
