@@ -13,12 +13,29 @@ $$("nav a").forEach(link => link.addEventListener("click", () => {
 }));
 
 const themeButton = $("#theme-toggle");
+const themeStatus = $(".theme-status", themeButton);
+const colorScheme = matchMedia("(prefers-color-scheme: dark)");
+
+function applyTheme(theme, save = false) {
+  const isDark = theme === "dark";
+  document.body.classList.toggle("dark", isDark);
+  document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+  themeButton.setAttribute("aria-pressed", String(isDark));
+  themeButton.setAttribute("aria-label", isDark ? "Ativar tema claro" : "Ativar tema escuro");
+  themeButton.title = isDark ? "Ativar tema claro" : "Ativar tema escuro";
+  themeStatus.textContent = isDark ? "Tema escuro ativo" : "Tema claro ativo";
+  if (save) localStorage.setItem("agro-theme", theme);
+}
+
 const savedTheme = localStorage.getItem("agro-theme");
-const prefersDark = matchMedia("(prefers-color-scheme: dark)").matches;
-if (savedTheme === "dark" || (!savedTheme && prefersDark)) document.body.classList.add("dark");
+applyTheme(savedTheme || (colorScheme.matches ? "dark" : "light"));
+
 themeButton.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  localStorage.setItem("agro-theme", document.body.classList.contains("dark") ? "dark" : "light");
+  applyTheme(document.body.classList.contains("dark") ? "light" : "dark", true);
+});
+
+colorScheme.addEventListener?.("change", event => {
+  if (!localStorage.getItem("agro-theme")) applyTheme(event.matches ? "dark" : "light");
 });
 
 function updateScroll() {
