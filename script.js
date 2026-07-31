@@ -211,3 +211,25 @@ pledgeForm.addEventListener("submit", event => {
   localStorage.setItem("agro-pledge", selected);
   $("#pledge-message").textContent = "Compromisso registrado: " + selected + "!";
 });
+
+// Botão flutuante de retorno ao início
+const backToTopButton = document.getElementById("back-to-top");
+
+if (backToTopButton) {
+  const toggleBackToTop = () => {
+    const shouldShow = window.scrollY > 420;
+    backToTopButton.classList.toggle("visible", shouldShow);
+    backToTopButton.setAttribute("aria-hidden", String(!shouldShow));
+    backToTopButton.tabIndex = shouldShow ? 0 : -1;
+  };
+
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+    });
+  });
+
+  window.addEventListener("scroll", toggleBackToTop, { passive: true });
+  toggleBackToTop();
+}
