@@ -98,7 +98,7 @@ countObserver.observe($(".stats-grid"));
 // ==================================================
 // 07. DESTAQUE DA SEÇÃO ATIVA NO MENU
 // ==================================================
-const sections = $("main section[id]");
+const sections = $$("main section[id]");
 const navigationLinks = $$("nav a");
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
